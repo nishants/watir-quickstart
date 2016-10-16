@@ -12,5 +12,7 @@ browser.goto("google.com")
 browser.text_field(name: 'q').set("WebDriver rocks!")
 browser.button(name: 'btnG').click
 puts browser.url
-browser.close
 $browser = browser
+at_exit do
+  browser.close
+end
