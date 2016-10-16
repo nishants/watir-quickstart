@@ -1,4 +1,4 @@
-class UserDetailPage
+class UserDetailPage < Page
   def self.open
     UserDetailPage.new
   end

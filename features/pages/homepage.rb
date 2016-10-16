@@ -1,4 +1,4 @@
-class HomePage
+class HomePage < Page
   def self.open
     HomePage.new
   end
