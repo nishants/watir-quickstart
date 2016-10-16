@@ -4,7 +4,10 @@ class HomePage < Page
   end
 
   def initialize
-    puts "opening user page"
+    super()
+    @browser.text_field(name: 'q').set("WebDriver rocks!")
+    @browser.button(name: 'btnG').click
+    puts @browser.url
   end
 
   def view_adress_of username

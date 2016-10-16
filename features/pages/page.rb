@@ -1,8 +1,7 @@
 class Page
 
-  @brower = "browser"
   def initialize
+    @browser = $browser
   end
-
 
 end
