@@ -4,3 +4,7 @@ Setup :
 3. $ cucumber init
 4.  cucumber --init
 5. 
+
+## User Tagging
+example : 
+@functional, @integration
