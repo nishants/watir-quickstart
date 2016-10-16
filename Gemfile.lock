@@ -20,6 +20,7 @@ GEM
     gherkin (4.0.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
+    rake (11.3.0)
     rubyzip (1.2.0)
     selenium-webdriver (2.53.4)
       childprocess (~> 0.5)
@@ -34,6 +35,7 @@ PLATFORMS
 
 DEPENDENCIES
   cucumber
+  rake
   watir-webdriver
 
 BUNDLED WITH
