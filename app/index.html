@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="lib/bootstrap.min.css">
+    <script src="lib/angular-1.4.3.js"></script>
+    <script src="lib/ui-router.js"></script>
+</head>
+<body ng-app="some-app" ng-controller="ui-controller">
+<a ui-sref="home-page">home</a>
+<a ui-sref="login">login</a>
+
+<div class="main-container"
+     ui-view>
+
+</div>
+
+<script>
+
+    var app = angular.module("some-app", ['ui.router']);
+
+    app.config(["$stateProvider", function ($stateProvider) {
+        $stateProvider
+                .state("home-page", {
+                    url: "/",
+                    template: '<h1>hompage</h1><a ui-sref="users">List Items</a>',
+                    controller: ["$scope", function ($scope) {
+                        $scope.ui.state.switchTo("home-page");
+                    }]
+
+                })
+                .state("login", {
+                    url: "login",
+                    template: '<h1>Login</h1>',
+                    controller: ["$scope", function ($scope) {
+                        $scope.ui.state.switchTo("login");
+                    }]
+
+                })
+                .state("users", {
+                    url: "/users",
+                    template: "<h1>items list</h1><ul ng-repeat='item in items'><li>{{item.name}}</li></ul>",
+                    controller: ["$scope", function ($scope) {
+                        $scope.ui.state.switchTo("users");
+                    }]
+                });
+    }]);
+    app.controller("ui-controller", ["$scope", function($scope){
+        var ui = {
+            state: {
+                switchTo: function (name) {
+                    ui.state.name = name;
+                }
+            }
+        };
+        $scope.ui = ui
+    }]);
+
+</script>
+</body>
+</html>
