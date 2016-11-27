@@ -1,7 +1,9 @@
 class HomePage
   include PageObject
 
-  page_url "google.com"
+  # page_url "google.com"
+  page_url "#{FigNewton.base_url}/#"
+
 
   text_field(:input, :name =>  "q")
 
