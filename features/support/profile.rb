@@ -10,6 +10,6 @@ class Profile
 
   def load(feature_path, scenario_name)
     @scenario = scenario_name
-    @data = YAML.load_file("config/data/#{ENV['data']}/#{feature_path}.yml")
+    @data = YAML.load_file("data/#{ENV['data']}/#{feature_path}.yml")
   end
 end

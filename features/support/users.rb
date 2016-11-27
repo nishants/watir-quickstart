@@ -3,7 +3,7 @@ require 'yaml'
 class Users
 
   def initialize
-    @users = YAML.load_file("config/data/#{ENV['data']}/users.yml")
+    @users = YAML.load_file("data/#{ENV['data']}/users.yml")
   end
 
   def get(user_name)
