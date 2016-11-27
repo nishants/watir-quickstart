@@ -1,7 +1,6 @@
 Before do
   @profile = Profile.new
   @browser = Watir::Browser.new(:chrome)
-  @browser.goto("google.com")
   $browser = @browser
 end
 

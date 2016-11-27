@@ -7,3 +7,5 @@ Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), "../p
 end
 chromedriver_path = File.join(File.absolute_path('../..', File.dirname(__FILE__)),"drivers","chromedriver")
 Selenium::WebDriver::Chrome.driver_path = chromedriver_path
+
+World(PageObject::PageFactory)
