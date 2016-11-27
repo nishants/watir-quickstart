@@ -11,6 +11,6 @@ class Profile
 
   def load(feature_path, scenario_name)
     @scenario = scenario_name
-    DataMagic.load feature_path+".yml"
+    DataMagic.load("#{ENV['data']}/#{feature_path}.yml")
   end
 end
