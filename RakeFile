@@ -2,7 +2,22 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-Cucumber::Rake::Task.new(:features) do |t|
+
+namespace :features do
+  Cucumber::Rake::Task.new(:one) do |t|
+    t.profile = "profile-one"
+  end
+
+  Cucumber::Rake::Task.new(:two) do |t|
+    t.profile = "profile-two"
+  end
+
+  task :all do
+    Rake::Task["features:one"].invoke
+    Rake::Task["features:two"].invoke
+  end
+
 end
 
-task(:default => :features)
+task(:default => "features:all")
+
