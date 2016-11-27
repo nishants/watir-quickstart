@@ -14,7 +14,7 @@ Before('@transactional') do
 end
 
 Before do |scenario|
-  feature_path   = scenario.feature.all_locations.first.to_s.split("/")[1].split(":").first.strip.split(".feature").first.strip
+  feature_path   = scenario.feature.all_locations.first.to_s.split("features/")[1].split(":").first.strip.split(".feature").first.strip
   @profile.load(feature_path, scenario.name)
   @scenario_tags  = scenario.source_tag_names
 end

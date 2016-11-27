@@ -6,11 +6,7 @@ class Profile
   end
 
   def get(key)
-    scenario[key]
-  end
-
-  def scenario
-    data_for(@scenario)
+    data_for(@scenario)[key]
   end
 
   def load(feature_path, scenario_name)
