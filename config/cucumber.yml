@@ -2,5 +2,5 @@
 
 default   : --profile profile-one
 
-profile-one: FIG_NEWTON_FILE=one.yml  --tags @tagone --out=reports/profile-one.html <%= common %>
-profile-two: FIG_NEWTON_FILE=two.yml --tags @tagtwo --out=reports/profile-two.html <%= common %>
+profile-one: --tags @tagone --out=reports/profile-one.html <%= common %>
+profile-two: --tags @tagtwo --out=reports/profile-two.html <%= common %>

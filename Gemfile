@@ -5,6 +5,5 @@ gem "rspec"
 gem "rake"
 gem "cucumber"
 gem "watir-webdriver"
-gem 'fig_newton'
 gem 'page-object'
 gem 'data_magic'
