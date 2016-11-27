@@ -1,6 +1,10 @@
 class Profile
   include DataMagic
 
+  def timeout
+    FigNewton.timeout
+  end
+
   def param_one
     scenario["param_one"]
   end

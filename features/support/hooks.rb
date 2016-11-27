@@ -1,7 +1,8 @@
 Before do
   @profile = Profile.new
-  @browser = Watir::Browser.new(:chrome)
-  $browser = @browser
+  client = Selenium::WebDriver::Remote::Http::Default.new
+  client.timeout = @profile.timeout
+  @browser = Watir::Browser.new(:chrome, :http_client => client)
 end
 
 After do
