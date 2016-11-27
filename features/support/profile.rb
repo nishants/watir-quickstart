@@ -5,8 +5,8 @@ class Profile
     FigNewton.timeout
   end
 
-  def param_one
-    scenario["param_one"]
+  def get(key)
+    scenario[key]
   end
 
   def scenario
