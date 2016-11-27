@@ -5,8 +5,8 @@ class HomePage
 
   text_field(:input, :name =>  "q")
 
-  def view_adress_of username
-    input_element.set("WebDriver rocks!")
+  def do_something
+    input_element.send_keys("WebDriver rocks!")
     @browser.button(name: 'btnG').click
     "click on user"
   end

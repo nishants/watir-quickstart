@@ -10,7 +10,7 @@ end
 
 When(/^I view a user's address$/) do
   visit(HomePage)
-  on(HomePage).view_adress_of("Dam Sam")
+  on(HomePage).do_something
 end
 
 Then(/^I should see their address and past addresses with duration of stay$/) do
