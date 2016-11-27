@@ -65,7 +65,6 @@ PLATFORMS
 
 DEPENDENCIES
   cucumber
-  data_magic
   fig_newton
   page-object
   rake

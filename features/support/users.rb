@@ -1,7 +1,6 @@
 require 'yaml'
 
 class Users
-  include DataMagic
 
   def initialize
     @users = YAML.load_file("config/data/#{ENV['data']}/users.yml")
