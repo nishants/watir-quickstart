@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 source "https://rubygems.org"
 
+gem "rspec"
 gem "rake"
 gem "cucumber"
 gem "watir-webdriver"
+gem 'fig_newton'
+gem 'page-object'
