@@ -1,5 +1,5 @@
 Before do
-  @data = Profile.new
+  @data    = DataSuite.new(ENV["data"])
   @users   = Users.new
   @browser = Drivers.get(ENV["browser"], ENV["device"])
 end
