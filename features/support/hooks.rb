@@ -1,12 +1,7 @@
 Before do
   @profile = Profile.new
   @users   = Users.new
-
-  mobile_emulation = { "deviceName" => "Apple iPhone 5" }
-  capabilities = Selenium::WebDriver::Remote::Capabilities.chrome("chromeOptions" =>
-                                                                      { "mobileEmulation" => mobile_emulation })
-
-  @browser = Watir::Browser.new(:chrome, :desired_capabilities => capabilities)
+  @browser = Drivers.get(ENV["browser"], ENV["device"])
 end
 
 After do

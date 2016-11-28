@@ -7,7 +7,8 @@ Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), "../p
   require file
 end
 
-chromedriver_path = File.join(File.absolute_path('../..', File.dirname(__FILE__)),"drivers","chromedriver")
-Selenium::WebDriver::Chrome.driver_path = chromedriver_path
+Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), "./drivers")) + "/**/*.rb"].each do |file|
+  require file
+end
 
 World(PageObject::PageFactory)
