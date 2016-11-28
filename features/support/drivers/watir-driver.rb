@@ -1,6 +1,7 @@
 class WatirDriver
 
-  def self.load(browser = :chrome, device = "Apple iPhone 5")
+  def self.load(browser, device)
+    browser = browser || :chrome
     load_chrome if browser == :chrome
     device ? chrome_mobile(browser, device) : desktop(browser)
   end
