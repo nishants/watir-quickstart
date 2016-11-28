@@ -1,5 +1,5 @@
 Before do
-  @profile = Profile.new
+  @data = Profile.new
   @users   = Users.new
   @browser = Drivers.get(ENV["browser"], ENV["device"])
 end
@@ -14,6 +14,6 @@ end
 
 Before do |scenario|
   feature_path   = scenario.feature.all_locations.first.to_s.split("features/")[1].split(":").first.strip.split(".feature").first.strip
-  @profile.load(feature_path, scenario.name)
+  @data.load(feature_path, scenario.name)
   @scenario_tags  = scenario.source_tag_names
 end
