@@ -15,7 +15,6 @@ class DataSuite
   end
 
   def current
-    data_file = "data/#{@name}/#{@feature_path}.yml"
     error_check(!File.exist?(data_file), "Data file not found : #{Dir.pwd}/#{data_file}")
     @data = @data || YAML.load_file(data_file)
     error_check(!@data, "Data file empty : #{Dir.pwd}/#{data_file}")
@@ -27,7 +26,7 @@ class DataSuite
   end
 
   def data_file
-    "data/#{@name}/#{@feature_path}.yml"
+    "#{FigNewton.data}/#{@feature_path}.yml"
   end
 
   def load(feature_path, scenario_name)
