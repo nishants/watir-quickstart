@@ -9,11 +9,23 @@ class DataSuite
   end
 
   def get(key)
-    current[@scenario][key]
+    data  = current[@scenario]
+    error_check(data.nil?, "No data for scenario : '#{@scenario}' in file #{data_file}")
+    data[key]
   end
 
   def current
-    @data = @data || YAML.load_file("data/#{@name}/#{@feature_path}.yml")
+    data_file = "data/#{@name}/#{@feature_path}.yml"
+    error_check(!File.exist?(data_file), "Data file not found : #{Dir.pwd}/#{data_file}")
+    @data = @data || YAML.load_file(data_file)
+  end
+
+  def error_check(has_error, message)
+    raise message if has_error
+  end
+
+  def data_file
+    "data/#{@name}/#{@feature_path}.yml"
   end
 
   def load(feature_path, scenario_name)
