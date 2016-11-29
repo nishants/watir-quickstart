@@ -3,13 +3,18 @@ require 'cucumber'
 require 'cucumber/rake/task'
 
 
-namespace :features do
+namespace :test do
   Cucumber::Rake::Task.new(:functional) do |t|
+    ENV["test-env"] = "one"
     t.profile = "functional"
-  end
+    env_name = ENV["env"] || "default"
+    t.cucumber_opts = "FIG_NEWTON_FILE=#{env_name}.yml"  end
 
   Cucumber::Rake::Task.new(:integration) do |t|
+    ENV["test-env"] = "two"
     t.profile = "integration"
+    env_name = ENV["env"] || "default"
+    t.cucumber_opts = "FIG_NEWTON_FILE=#{env_name}.yml"
   end
 
   task :all do
@@ -19,5 +24,5 @@ namespace :features do
 
 end
 
-task(:default => "features:all")
+task(:default => "test:all")
 

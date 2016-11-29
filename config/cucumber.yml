@@ -2,5 +2,5 @@
 
 default   : --profile functional
 
-functional: FIG_NEWTON_FILE=one.yml   --tags @tagone --out=profile-one.html <%= common %>
-integration: FIG_NEWTON_FILE=two.yml  --tags @tagtwo --out=profile-two.html <%= common %>
+functional:  --tags @tagone --out=profile-one.html <%= common %>
+integration: --tags @tagtwo --out=profile-two.html <%= common %>
