@@ -1,11 +1,11 @@
 class DataSuite
 
-  def initialize(name)
-    @name = name
+  def initialize(path)
+    @path = path
   end
 
   def timeout
-    FigNewton.timeout
+    300
   end
 
   def get(key)
@@ -26,7 +26,7 @@ class DataSuite
   end
 
   def data_file
-    "#{FigNewton.data}/#{@feature_path}.yml"
+    "#{@path}/#{@feature_path}.yml"
   end
 
   def load(feature_path, scenario_name)

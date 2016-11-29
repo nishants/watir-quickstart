@@ -1,6 +1,6 @@
 Before do
-  @data    = DataSuite.new(ENV["data"])
-  @users   = Users.new
+  @data    = DataSuite.new(FigNewton.data)
+  @users   = Users.new(YAML.load_file("#{FigNewton.data}/users.yml"))
   @browser = Drivers.get(ENV["browser"], ENV["device"])
 end
 
