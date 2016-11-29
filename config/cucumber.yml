@@ -1,6 +1,6 @@
 <% common = "--format pretty -r src"%>
 
-default   : --profile profile-one
+default   : --profile functional
 
-profile-one: FIG_NEWTON_FILE=one.yml  data="one" --tags @tagone --out=profile-one.html <%= common %>
-profile-two: FIG_NEWTON_FILE=two.yml  data="two" --tags @tagtwo --out=profile-two.html <%= common %>
+functional: FIG_NEWTON_FILE=one.yml  data="one" --tags @tagone --out=profile-one.html <%= common %>
+integration: FIG_NEWTON_FILE=two.yml  data="two" --tags @tagtwo --out=profile-two.html <%= common %>
