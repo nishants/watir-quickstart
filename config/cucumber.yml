@@ -1,6 +1,6 @@
 <% common = "--format pretty -r src"%>
 
-default   : --profile functional
+default   : --profile functional --profile integration
 
 functional:  --tags @functional   --out=functional.html <%= common %>
 integration: --tags @integration  --out=integration.html <%= common %>

@@ -9,13 +9,11 @@ namespace :test do
   end
 
   Cucumber::Rake::Task.new(:functional) do |t|
-    ENV["test-env"] = "one"
     t.profile = "functional"
     t.cucumber_opts = options_for(ENV["env"])
   end
 
   Cucumber::Rake::Task.new(:integration) do |t|
-    ENV["test-env"] = "two"
     t.profile = "integration"
     t.cucumber_opts = options_for(ENV["env"])
   end
