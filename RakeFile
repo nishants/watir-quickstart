@@ -21,8 +21,8 @@ namespace :test do
   end
 
   task :all do
-    Rake::Task["features:functional"].invoke
-    Rake::Task["features:integration"].invoke
+    Rake::Task["test:functional"].invoke
+    Rake::Task["test:integration"].invoke
   end
 
 end

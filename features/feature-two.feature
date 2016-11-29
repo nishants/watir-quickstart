@@ -1,6 +1,6 @@
 Feature: View User Details
 
-  @tagone @transactional
+  @functional @transactional
   Scenario: Admin does something radically different
     Given I am an admin
     Then I should see all users listed on my homepage

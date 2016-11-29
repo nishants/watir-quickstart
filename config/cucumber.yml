@@ -2,5 +2,5 @@
 
 default   : --profile functional
 
-functional:  --tags @tagone --out=profile-one.html <%= common %>
-integration: --tags @tagtwo --out=profile-two.html <%= common %>
+functional:  --tags @functional   --out=functional.html <%= common %>
+integration: --tags @integration  --out=integration.html <%= common %>
