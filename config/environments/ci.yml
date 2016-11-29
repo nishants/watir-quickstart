@@ -1,0 +1,9 @@
+base_url: google.com
+profile_param_one : one
+timeout: 300
+
+data: config/data/one
+
+driver :
+  browser: chrome
+  device: Apple iPhone 5
