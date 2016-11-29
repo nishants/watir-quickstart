@@ -18,6 +18,8 @@ class DataSuite
     data_file = "data/#{@name}/#{@feature_path}.yml"
     error_check(!File.exist?(data_file), "Data file not found : #{Dir.pwd}/#{data_file}")
     @data = @data || YAML.load_file(data_file)
+    error_check(!@data, "Data file empty : #{Dir.pwd}/#{data_file}")
+    @data
   end
 
   def error_check(has_error, message)
