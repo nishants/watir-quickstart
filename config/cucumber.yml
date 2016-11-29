@@ -1,4 +1,4 @@
-<% common = "--format pretty "%>
+<% common = "--format pretty -r src"%>
 
 default   : --profile profile-one
 
