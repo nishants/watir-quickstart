@@ -18,6 +18,11 @@ namespace :test do
     t.cucumber_opts = options_for(ENV["env"])
   end
 
+  Cucumber::Rake::Task.new(:tag) do |t|
+    t.profile = "tags"
+    t.cucumber_opts = "#{options_for(ENV["env"])} --tags #{ENV["taglist"]}"
+  end
+
   task :all do
     Rake.application.options.trace = true
     Rake::Task["test:integration"].invoke

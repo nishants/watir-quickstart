@@ -9,3 +9,15 @@ config/environments/<env>.yml must exist,
 if env is not mentioned, env is set to "default"
 
 default env : dev.
+
+run single tag : 
+rake test:tag taglist=@one
+
+run all : 
+rake test:all
+
+run functional : 
+rake test:functional
+
+run integration : 
+rake test:integration

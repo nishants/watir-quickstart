@@ -1,6 +1,6 @@
 Feature: View User Details
 
-  @functional @transactional
+  @functional @transactional @one
   Scenario: Admin views user's address history
     Given I am an admin
     Then I should see all users listed on my homepage
