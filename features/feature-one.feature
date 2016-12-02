@@ -1,13 +1,13 @@
 Feature: View User Details
 
-  @functional @transactional @one
+  @functional @transactional @one @stub
   Scenario: Admin views user's address history
     Given I am an admin
     Then I should see all users listed on my homepage
     When I view a user's address
     Then I should see their address and past addresses with duration of stay
 
-  @functional @transactional
+  @functional @transactional @stub
   Scenario: Admin does something else
     Given I am an admin
     Then I should see all users listed on my homepage

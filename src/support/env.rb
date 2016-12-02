@@ -12,4 +12,8 @@ Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), "./dr
   require file
 end
 
+at_exit do
+  Stub.stop
+end
+
 World(PageObject::PageFactory)
