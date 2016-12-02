@@ -19,8 +19,9 @@ namespace :test do
   end
 
   task :all do
-    Rake::Task["test:functional"].invoke
+    Rake.application.options.trace = true
     Rake::Task["test:integration"].invoke
+    Rake::Task["test:functional"].invoke
   end
 
 end
