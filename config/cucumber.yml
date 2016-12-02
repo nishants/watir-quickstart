@@ -2,5 +2,5 @@
 
 default   : --profile functional --profile integration
 
-functional:  --tags @functional   --out=functional.html stub=true <%= common %>
-integration: --tags @integration  --out=integration.html <%= common %>
+functional:  --tags @functional   --out=reports/functional.html stub=true <%= common %>
+integration: --tags @integration  --out=reports/integration.html <%= common %>
