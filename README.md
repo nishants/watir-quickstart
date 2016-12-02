@@ -11,7 +11,7 @@ if env is not mentioned, env is set to "default"
 default env : dev.
 
 run single tag : 
-rake test:tag taglist=@one
+rake test:tag taglist=@one [stub=true]
 
 run all : 
 rake test:all
