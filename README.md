@@ -1,23 +1,44 @@
-Run Tests
+### Running Tests
 
+```bash
 rake test:<suite> [env=<env>] [feature-file] [scenario-name] [browser= <ie|firefox|chrome>] [device=<iphone-5, iphone-6, iphone-7,galaxy-8>]
+```
+### Running All Tests
 
-devices in known-devices.yml
+```bash
+rake test:all
+```
 
-config/environments/<env>.yml must exist,
+### Running By tags
+
+```bash
+rake test:tag taglist=@one 
+```
+
+### Running Functinoal tests
+
+```bash
+rake test:functional
+```
+
+### Creating new env
+- config/environments/env-name.yml must exist,
+- run tests as 
+
+```bash
+rake test:all env=env-name
+```
+
+
+### Running Integration tests
+
+```bash
+rake test:integration
+```
+
+
+
+
+
 
 if env is not mentioned, env is set to "default"
-
-default env : dev.
-
-run single tag : 
-rake test:tag taglist=@one [stub=true]
-
-run all : 
-rake test:all
-
-run functional : 
-rake test:functional
-
-run integration : 
-rake test:integration
