@@ -6,7 +6,7 @@ class HomePage < Page
   button(:press_enter, name: 'btnG')
 
   def search(key)
-    input_text_element.send_keys(key)
+    input_text_element.when_present.send_keys(key)
     press_enter
   end
 
