@@ -4,6 +4,14 @@ timeout: 300
 
 data: config/data/default
 
+stub :
+  wiremock :
+    jar  : wiremock-standalone-2.3.1
+    path : config/stub
+    port : 8081
+    root_dir : config/stub
+    verbose : false
+
 driver :
   browser: chrome
   device: Apple iPhone 5

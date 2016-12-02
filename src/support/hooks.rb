@@ -2,10 +2,12 @@ Before do
   @data    = DataSuite.new(FigNewton.data)
   @users   = Users.new(YAML.load_file("#{FigNewton.data}/users.yml"))
   @browser = Drivers.get(ENV["browser"], ENV["device"])
+  @stub    = ENV["stub"] ? Stub.start(FigNewton.stub.wiremock) : nil
 end
 
 After do
   @browser.close
+  @stub.close if @stub
 end
 
 Before('@transactional') do
