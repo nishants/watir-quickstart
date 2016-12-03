@@ -23,12 +23,7 @@ namespace :test do
     t.cucumber_opts = "#{options_for(ENV["env"])} --tags #{ENV["tags"]}"
   end
 
-  task :all do
-    Rake.application.options.trace = true
-    Rake::Task["test:integration"].invoke
-    Rake::Task["test:functional"].invoke
-  end
-
+  task :all => ["test:integration", :"test:functional"]
 end
 
 task(:default => "test:all")
