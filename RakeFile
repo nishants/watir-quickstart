@@ -20,7 +20,7 @@ namespace :test do
 
   Cucumber::Rake::Task.new(:tag) do |t|
     t.profile = "tags"
-    t.cucumber_opts = "#{options_for(ENV["env"])} --tags #{ENV["taglist"]}"
+    t.cucumber_opts = "#{options_for(ENV["env"])} --tags #{ENV["tags"]}"
   end
 
   task :all do
