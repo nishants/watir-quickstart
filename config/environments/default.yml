@@ -1,5 +1,3 @@
-timeout: 300
-
 urls :
   default : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/integration
   stubbed : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/functional

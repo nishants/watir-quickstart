@@ -48,23 +48,23 @@ namespace :test do
 
   namespace :integration do
     create(name: "bigweb", profile: "integration", options: options)
-    create(name: "mobile", profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile"))
+    create(name: "mobile", profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
 
     namespace :smoke do
       create(name: "bigweb" , profile: "integration-smoke", options: options)
-      create(name: "mobile" , profile: "integration-smoke", options: options(page_dir: "mobile", data_suite: "mobile"))
+      create(name: "mobile" , profile: "integration-smoke", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
       task :all => ["test:integration:smoke:bigweb", :"test:integration:smoke:mobile"]
     end
 
     namespace :core do
       create(name: "bigweb" , profile: "integration-core", options: options)
-      create(name: "mobile" , profile: "integration-core", options: options(page_dir: "mobile", data_suite: "mobile"))
+      create(name: "mobile" , profile: "integration-core", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
       task :all => ["test:integration:core:bigweb", :"test:integration:core:mobile"]
     end
 
     namespace :regression do
       create(name: "bigweb" , profile: "integration-regression", options: options)
-      create(name: "mobile" , profile: "integration-regression", options: options(page_dir: "mobile", data_suite: "mobile"))
+      create(name: "mobile" , profile: "integration-regression", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
       task :all => ["test:integration:regression:bigweb", :"test:integration:regression:mobile"]
     end
 
