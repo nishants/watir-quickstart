@@ -7,7 +7,7 @@ data :
 
 pages:
   default : ./src/bigweb/pages
-  mobile  : ./src/mobile/pages/
+  mobile  : ./src/mobile/pages
 
 stub :
   wiremock :

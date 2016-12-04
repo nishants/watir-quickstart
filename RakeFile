@@ -25,7 +25,27 @@ namespace :test do
     t.cucumber_opts = "#{options_for(ENV["env"])} --tags #{ENV["tags"]}"
   end
 
-  task :all => ["test:integration", :"test:functional"]
+  namespace :mobile do
+
+    Cucumber::Rake::Task.new(:functional) do |t|
+      t.profile = "functional"
+      t.cucumber_opts = options_for(ENV["env"], "mobile", "mobile")
+    end
+
+    Cucumber::Rake::Task.new(:integration) do |t|
+      t.profile = "integration"
+      t.cucumber_opts = options_for(ENV["env"], "mobile", "mobile")
+    end
+
+    Cucumber::Rake::Task.new(:tag) do |t|
+      t.profile = "tags"
+      t.cucumber_opts = "#{options_for(ENV["env"], "mobile", "mobile")} --tags #{ENV["tags"]}"
+    end
+
+    task :all => ["test:mobile:integration", :"test:mobile:functional"]
+  end
+
+    task :all => ["test:integration", :"test:functional"]
 end
 
 task(:default => "test:all")
