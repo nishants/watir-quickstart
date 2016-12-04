@@ -2,7 +2,8 @@ Feature: View User Details
 
   @functional @transactional @one @stub
   Scenario: Admin views user's address history
-    Given I am an admin
+    Given I am an "admin"
+    Given Then my username is "admin" and password is "admin@12345"
     Then I invoke "param_one" on @data, I get value "one"
     When I view a user's address
     Then I should see their address and past addresses with duration of stay

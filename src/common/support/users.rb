@@ -1,4 +1,5 @@
 require 'yaml'
+require "ostruct"
 
 class Users
 
@@ -7,7 +8,7 @@ class Users
   end
 
   def get(user_name)
-    @users[user_name]
+    OpenStruct.new(@users[user_name])
   end
 
 end

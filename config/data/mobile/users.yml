@@ -1,4 +1,4 @@
 
-user-one:
- id: user-one
- password: some-pass
+admin:
+ id: admin
+ password: admin@12345

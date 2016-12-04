@@ -13,7 +13,16 @@ end
 
 Then(/^I invoke "([^"]*)" on @data, I get value "([^"]*)"$/) do |param_name, expected|
   expect(@data.send(param_name)).to eq(expected)
-  expect(@users.get("user-one")["id"]).to eq("user-one")
   expect(@data.send(param_name)).to eq(expected)
   expect(@type).to eq(:transactional)
+end
+
+Given(/^I am an "([^"]*)"$/) do |user|
+  @user = @users.get(user)
+  expect(@users.get(user).nil?).to eq(false)
+end
+
+Given(/^Then my username is "([^"]*)" and password is "([^"]*)"$/) do |expected_id, expected_password|
+  expect(@user.id).to eq(expected_id)
+  expect(@user.password).to eq(expected_password)
 end

@@ -24,10 +24,10 @@ namespace :test do
     create_profile(:integration , options_for(ENV["env"], "mobile", "mobile"))
     create_profile(:tags        , "#{options_for(ENV["env"], "mobile", "mobile")} --tags #{ENV["tags"]}")
 
-    task :all => ["test:mobile:integration", :"test:mobile:functional"]
+    multitask :all => ["test:mobile:integration", :"test:mobile:functional"]
   end
 
-    task :all => ["test:integration", :"test:functional"]
+  multitask :all => ["test:integration", :"test:functional"]
 end
 
 task(:default => ["test:all", "test:mobile:all"])
