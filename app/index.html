@@ -6,15 +6,25 @@
     <link rel="stylesheet" href="lib/bootstrap.min.css">
     <script src="lib/angular-1.4.3.js"></script>
     <script src="lib/ui-router.js"></script>
+    <script src="lib/jquery-3.1.1.min.js"></script>
 </head>
 
 <body ng-app="app">
 
-<input name="q">
-<button name="btnG"></button>
-<div class="main-container"
-     ui-view>
+<div ui-view>
+</div>
 
+<form class="form form-inline input-group">
+    <input name="q" placeholder="search">
+    <button name="btnG" class="btn btn-primary">Search</button>
+</form>
+
+<div id="templates" ng-show="false" ng-ignore>
+    <div id="functional-temlpate">
+        <h1>This is {{type}} home</h1>
+        <div class="visible-sm">Mobile</div>
+        <div class="visible-sm">Bigweb</div>
+    </div>
 </div>
 
 <script>
@@ -26,8 +36,8 @@
         $stateProvider
                 .state("functional", {
                     url: "/functional",
-                    template: '<h1>This is {{type}} home</h1><div class="visible-sm">Mobile</div><div class="hidden-sm">Bigweb</div>',
-                    controller: function($scope){
+                    template: $("#functional-temlpate").html(),
+                    controller: function ($scope) {
                         $scope.type = 'Stubbed';
                     }
                 }).state("integration", {
