@@ -5,6 +5,10 @@ data :
   default: config/data/default
   mobile: config/data/mobile
 
+pages:
+  default : ./src/pages
+  mobile  : src/mobile/pages/
+
 stub :
   wiremock :
     jar  : wiremock-standalone-2.3.1

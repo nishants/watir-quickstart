@@ -2,7 +2,7 @@ require 'rspec'
 require 'watir-webdriver'
 require 'fig_newton'
 
-pages_dir = ENV["pages"]
+pages_dir = FigNewton.pages.send(ENV["pages"])
 require "#{pages_dir}/page"
 
 Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), pages_dir)) + "/**/*.rb"].each do |file|
