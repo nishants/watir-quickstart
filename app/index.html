@@ -9,45 +9,18 @@
     <script src="lib/jquery-3.1.1.min.js"></script>
 </head>
 
-<body ng-app="app">
-
-<div ui-view>
-</div>
+<body >
 
 <form class="form form-inline input-group">
     <input name="q" placeholder="search">
     <button name="btnG" class="btn btn-primary">Search</button>
 </form>
 
-<div id="templates" ng-show="false" ng-ignore>
-    <div id="functional-temlpate">
-        <h1>This is {{type}} home</h1>
-        <div class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
-        <div class="visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
-    </div>
+<div>
+    <h1>This is Integrated home</h1>
+    <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
+    <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
 </div>
 
-<script>
-    var app = angular.module("app", ["ui.router"]);
-
-    app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when("", "/functional");
-
-        $stateProvider
-                .state("functional", {
-                    url: "/functional",
-                    template: $("#functional-temlpate").html(),
-                    controller: function ($scope) {
-                        $scope.type = 'Stubbed';
-                    }
-                }).state("integration", {
-                    url: "/integration",
-                    template: '<h1>This is {{type}} home</h1><div class="visible-sm">Mobile</div><div class="hidden-sm">Bigweb</div>',
-                    controller: function ($scope) {
-                        $scope.type = 'Integrated';
-                    }
-                })
-    }]);
-</script>
 </body>
 </html>
