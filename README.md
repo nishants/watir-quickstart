@@ -4,7 +4,14 @@
 ```bash
 rake test:<functional|integration>:<tag>:<mobile|bigweb|all> tags=@tag [options]
 ```
+- example
+```bash
+rake test:functional:tag:all tags=@one
+rake test:functional:tag:bigweb tags=@two
+rake test:integration:tag:all tags=@two
+rake test:integration:tag:mobile tags=@one
 
+```
 ### By Priority
 ```bash
 rake test:<functional|integration>:<smoke|core|regression>:<mobile|bigweb|all> [options]
