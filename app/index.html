@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
     <title></title>
-    <link href="lib/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/bootstrap.min.css">
     <script src="lib/angular-1.4.3.js"></script>
     <script src="lib/ui-router.js"></script>
 </head>
-<body ng-app="some-app" ng-controller="ui-controller">
-<a ui-sref="home-page">home</a>
-<a ui-sref="login">login</a>
+
+<body ng-app="app">
 
 <div class="main-container"
      ui-view>
@@ -17,46 +16,26 @@
 </div>
 
 <script>
+    var app = angular.module("app", ["ui.router"]);
 
-    var app = angular.module("some-app", ['ui.router']);
+    app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.when("", "/functional");
 
-    app.config(["$stateProvider", function ($stateProvider) {
         $stateProvider
-                .state("home-page", {
-                    url: "/",
-                    template: '<h1>hompage</h1><a ui-sref="users">List Items</a>',
-                    controller: ["$scope", function ($scope) {
-                        $scope.ui.state.switchTo("home-page");
-                    }]
-
+                .state("functional", {
+                    url: "/functional",
+                    template: '<h1>This is {{type}} home</h1><div class="visible-sm">Mobile</div><div class="hidden-sm">Bigweb</div>',
+                    controller: function($scope){
+                        $scope.type = 'Stubbed';
+                    }
+                }).state("integration", {
+                    url: "/integration",
+                    template: '<h1>This is {{type}} home</h1><div class="visible-sm">Mobile</div><div class="hidden-sm">Bigweb</div>',
+                    controller: function ($scope) {
+                        $scope.type = 'Integrated';
+                    }
                 })
-                .state("login", {
-                    url: "login",
-                    template: '<h1>Login</h1>',
-                    controller: ["$scope", function ($scope) {
-                        $scope.ui.state.switchTo("login");
-                    }]
-
-                })
-                .state("users", {
-                    url: "/users",
-                    template: "<h1>items list</h1><ul ng-repeat='item in items'><li>{{item.name}}</li></ul>",
-                    controller: ["$scope", function ($scope) {
-                        $scope.ui.state.switchTo("users");
-                    }]
-                });
     }]);
-    app.controller("ui-controller", ["$scope", function($scope){
-        var ui = {
-            state: {
-                switchTo: function (name) {
-                    ui.state.name = name;
-                }
-            }
-        };
-        $scope.ui = ui
-    }]);
-
 </script>
 </body>
 </html>
