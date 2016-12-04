@@ -23,13 +23,16 @@ namespace :test do
   namespace :functional do
     create(name: "bigweb", profile: "functional", options: options(url: "stubbed", users: "stubbed"))
     create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
-    create(name: "smoke", profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+
+    create(name: "smoke" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    create(name: "core"  , profile: "functional-core", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
     multitask :all => ["test:functional:bigweb", :"test:functional:mobile"]
   end
   namespace :integration do
     create(name: "bigweb", profile: "integration", options: options)
     create(name: "mobile", profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile"))
     create(name: "smoke", profile: "integration-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    create(name: "core", profile: "integration-core", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
     multitask :all => ["test:integration:bigweb", :"test:integration:mobile"]
   end
   multitask :all => ["test:integration:all", :"test:functional:all"]
