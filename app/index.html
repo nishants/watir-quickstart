@@ -24,15 +24,21 @@
     <div>
         <h1>This is Integrated home</h1>
 
-        <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
-        <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
     </div>
 
     <div ui-view></div>
 
     <div  ng-hide="true">
         <div id="login-template" ng-non-bindable>
-            <form class="form-inline" role="form">
+            <div ng-show="user.id">
+                <label class="visible-xs visible-sm hidden-lg hidden-md">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
+                <label class="visible-lg visible-md hidden-xs hidden-sm">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
+
+                <div>
+                    <a class="btn btn-default" ui-sref="dashboard">dashboard</a>
+                </div>
+            </div>
+            <form class="form-inline" role="form" ng-hide="user.id">
                 <div class="form-group">
                     <label for="username">Username</label>
                     <input id="username" type="text" ng-model="form.username" class="form-control input-lg input-search" placeholder="id">
@@ -46,6 +52,16 @@
                 </div>
                 <div class="error" ng-bind="error.message"></div>
             </form>
+        </div>
+
+        <div id="dashboard-template">
+            <div ng-show="users.current.id">
+                <label ng-bind="users.current.name"></label>
+                <div>
+                    <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
+                    <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -78,11 +94,11 @@
                             password: "admin@12345"
                         }
                     }
-                }).state("integration", {
-                    url: "/integration",
-                    template: '<h1>This is {{type}} home</h1><div class="visible-sm">Mobile</div><div class="hidden-sm">Bigweb</div>',
+                }).state("dashboard", {
+                    url: "/dashboard",
+                    template: $("#dashboard-template").html(),
                     controller: function ($scope, userService) {
-                        $scope.type = 'Integrated';
+                        $scope.users = userService;
                     }
                 })
     }]);
@@ -92,20 +108,22 @@
             return response.data;
         });
 
-        return {
+        var service = {
+            current: null,
             login: function (form) {
                 var deferred = $q.defer();
                 users.then(function (users) {
-                    var found = users.filter(function(user){
+                    var found = users.filter(function (user) {
                         return form.username == user.id && form.password == user.password
-                    }), user;
+                    });
 
-                    user = found[0];
-                    user ? deferred.resolve(user) : deferred.reject({message: "Incorrect username/password."});
+                    service.current = found[0];
+                    service.current ? deferred.resolve(service.current) : deferred.reject({message: "Incorrect username/password."});
                 });
                 return deferred.promise;
             }
         };
+        return service;
     })
 </script>
 </body>
