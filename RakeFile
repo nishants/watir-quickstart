@@ -2,45 +2,28 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
+def options_for(env_name, pages="default", data_suite="default")
+  config_file = env_name || "default"
+
+  "FIG_NEWTON_FILE=#{config_file}.yml pages=#{pages} data_suite=#{data_suite}"
+end
+
+def create_profile(profile_name, options)
+  Cucumber::Rake::Task.new(profile_name) do |t|
+    t.profile = "#{profile_name}"
+    t.cucumber_opts = options
+  end
+end
 
 namespace :test do
-  def options_for(env_name, pages="default", data_suite="default")
-    config_file = env_name || "default"
-
-    "FIG_NEWTON_FILE=#{config_file}.yml pages=#{pages} data_suite=#{data_suite}"
-  end
-
-  Cucumber::Rake::Task.new(:functional) do |t|
-    t.profile = "functional"
-    t.cucumber_opts = options_for(ENV["env"])
-  end
-
-  Cucumber::Rake::Task.new(:integration) do |t|
-    t.profile = "integration"
-    t.cucumber_opts = options_for(ENV["env"])
-  end
-
-  Cucumber::Rake::Task.new(:tag) do |t|
-    t.profile = "tags"
-    t.cucumber_opts = "#{options_for(ENV["env"])} --tags #{ENV["tags"]}"
-  end
+  create_profile(:functional  , options_for(ENV["env"]))
+  create_profile(:integration , options_for(ENV["env"]))
+  create_profile(:tags        , "#{options_for(ENV["env"])} --tags #{ENV["tags"]}")
 
   namespace :mobile do
-
-    Cucumber::Rake::Task.new(:functional) do |t|
-      t.profile = "functional"
-      t.cucumber_opts = options_for(ENV["env"], "mobile", "mobile")
-    end
-
-    Cucumber::Rake::Task.new(:integration) do |t|
-      t.profile = "integration"
-      t.cucumber_opts = options_for(ENV["env"], "mobile", "mobile")
-    end
-
-    Cucumber::Rake::Task.new(:tag) do |t|
-      t.profile = "tags"
-      t.cucumber_opts = "#{options_for(ENV["env"], "mobile", "mobile")} --tags #{ENV["tags"]}"
-    end
+    create_profile(:functional  , options_for(ENV["env"], "mobile", "mobile"))
+    create_profile(:integration , options_for(ENV["env"], "mobile", "mobile"))
+    create_profile(:tags        , "#{options_for(ENV["env"], "mobile", "mobile")} --tags #{ENV["tags"]}")
 
     task :all => ["test:mobile:integration", :"test:mobile:functional"]
   end
@@ -48,5 +31,5 @@ namespace :test do
     task :all => ["test:integration", :"test:functional"]
 end
 
-task(:default => "test:all")
+task(:default => ["test:all", "test:mobile:all"])
 
