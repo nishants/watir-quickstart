@@ -2,7 +2,13 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-def options(config_file: ENV["env"] || "default", page_dir:"default", data_suite:"default", url: "default", report_file: "./reports/functional.html", users: "default")
+def options(config_file:  ENV["env"] || "default",
+            page_dir:     "default",
+            data_suite:   "default",
+            url:          "default",
+            report_file:  "./reports/index.html",
+            users:        "default")
+
   "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url} --out=#{report_file} users=#{users}"
 end
 
@@ -15,8 +21,8 @@ end
 
 namespace :test do
   namespace :functional do
-    create(name: "bigweb", profile: "functional", options: options(url: "stubbed"))
-    create(name: "mobile", profile: "functional", options: options(url: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    create(name: "bigweb", profile: "functional", options: options(url: "stubbed", users: "stubbed"))
+    create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
     multitask :all => ["test:functional:bigweb", :"test:functional:mobile"]
   end
   namespace :integration do
