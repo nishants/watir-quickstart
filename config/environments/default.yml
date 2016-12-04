@@ -1,6 +1,9 @@
-base_url: google.com
 timeout: 300
 
+urls :
+  integrated : google.com
+  stubbed:
+  
 data :
   default: config/data/default
   mobile: config/data/mobile

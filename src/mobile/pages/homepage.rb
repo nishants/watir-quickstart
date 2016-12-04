@@ -1,6 +1,6 @@
 class HomePage < Page
 
-  page_url "#{FigNewton.base_url}/#"
+  page_url base_url
 
   text_field(:input_text, :name =>  "q")
   button(:press_enter, name: 'btnG')

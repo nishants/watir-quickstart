@@ -2,8 +2,10 @@ require 'rspec'
 require 'watir-webdriver'
 require 'fig_newton'
 
+ENV["url"] = FigNewton.urls.integrated
+require_relative "../pages/page"
+
 pages_dir = FigNewton.pages.send(ENV["pages"])
-require "#{pages_dir}/page"
 
 Dir["#{pages_dir}/**/*.rb"].each do |file|
   require file
