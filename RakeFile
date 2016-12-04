@@ -23,6 +23,7 @@ namespace :test do
   namespace :functional do
     create(name: "bigweb", profile: "functional", options: options(url: "stubbed", users: "stubbed"))
     create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    create(name: "smoke", profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
     multitask :all => ["test:functional:bigweb", :"test:functional:mobile"]
   end
   namespace :integration do
