@@ -8,6 +8,6 @@ Feature: View User Details
     When I view a user's address
     Then I should see their address and past addresses with duration of stay
 
-  @functional @regression @transactional @two @stub
+  @functional @smoke @transactional @two @stub
   Scenario: Admin does something radically different
     Then I should see their address and past addresses with duration of stay

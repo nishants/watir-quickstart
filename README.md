@@ -33,3 +33,9 @@ rake test:<functional|integration>:<mobile|bigweb|all> [options]
 ```bash
 rake command [env=<env-name> | device=<device-name> | pages=<path/to/pages> | data_suite=<name> | url=<url> | report_file=<path> | client=<device&browser> | users=<profiles-name> | ]
 ```
+- example
+```bash
+rake test:functional:smoke:bigweb env=ci  users=stubbed
+rake test:functional:tag:bigweb env=dev tags=@one users=stubbed url=google.com report_file=abc.html client=firefox data_suite=default page_dir=default 
+   
+```

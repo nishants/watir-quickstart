@@ -2,14 +2,14 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-def options(config_file:  ENV["env"] || "default",
-            page_dir:     "default",
-            data_suite:   "default",
-            url:          "default",
-            report_file:  "./reports/index.html",
-            client:       "default",
-            users:        "default",
-            tags:          ENV["tags"] || nil)
+def options(config_file:  ENV["env"]          || "default",
+            page_dir:     ENV["page_dir"]     || "default",
+            data_suite:   ENV["data_suite"]   || "default",
+            url:          ENV["url"]          || "default",
+            report_file:  ENV["report_file"]  || "./reports/index.html",
+            client:       ENV["client"]       || "default",
+            users:        ENV["users"]        || "default",
+            tags:         ENV["tags"]         || nil)
 
   "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url} --out=#{report_file} users=#{users} client=#{client} #{("--tags " + tags) unless tags.nil?}"
 end
