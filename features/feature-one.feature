@@ -23,3 +23,19 @@ Feature: View User Details
     Then I invoke "param_three" on @data, I get value "three"
     When I view a user's address
     Then I should see their address and past addresses with duration of stay
+
+  @integration @core @transactional
+  Scenario: Admin views user's address histories
+    Given I am an "admin"
+    Then My username is "admin" and password is "admin@12345"
+    Then I invoke "param_three" on @data, I get value "three"
+    When I view a user's address
+    Then I should see their address and past addresses with duration of stay
+
+  @integration @regression @transactional
+  Scenario: Admin views user's address histories
+    Given I am an "admin"
+    Then My username is "admin" and password is "admin@12345"
+    Then I invoke "param_three" on @data, I get value "three"
+    When I view a user's address
+    Then I should see their address and past addresses with duration of stay
