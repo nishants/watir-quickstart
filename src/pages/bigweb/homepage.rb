@@ -7,7 +7,7 @@ class HomePage < Page
 
   def search(key)
     input_text_element.when_present.send_keys(key)
-    press_enter
+    input_text_element.when_present.click
   end
 
 end
