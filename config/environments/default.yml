@@ -8,7 +8,7 @@ data :
   default: config/data/default
   mobile: config/data/mobile
 
-pages:
+page_dir:
   default : ./src/bigweb/pages
   mobile  : ./src/mobile/pages
 

@@ -5,9 +5,10 @@ require 'fig_newton'
 def load_pages
   ENV["url"] = FigNewton.urls.send(ENV["url"] || "default")
   require_relative "../pages/page"
-  Dir["#{FigNewton.pages.send(ENV["pages"])}/**/*.rb"].each do |file|
+
+  Dir["#{FigNewton.page_dir.send(ENV["page_dir"])}/**/*.rb"].each do |file|
     require file
-  end
+  end unless ENV["page_dir"].nil?
 end
 
 at_exit do
