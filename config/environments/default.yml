@@ -1,8 +1,8 @@
 timeout: 300
 
 urls :
-  integrated : google.com
-  stubbed:
+  default : google.com
+  stubbed: google.com
   
 data :
   default: config/data/default
