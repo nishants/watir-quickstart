@@ -4,7 +4,6 @@ require 'cucumber/rake/task'
 
 def options_for(env_name, pages="default", data_suite="default")
   config_file = env_name || "default"
-
   "FIG_NEWTON_FILE=#{config_file}.yml pages=#{pages} data_suite=#{data_suite}"
 end
 

@@ -1,3 +1,5 @@
+require "ostruct"
+
 class DataSuite
 
   def initialize(path)
@@ -33,5 +35,6 @@ class DataSuite
     @scenario = scenario_name
     @feature_path = feature_path
     @data = nil
+    OpenStruct.new(YAML.load_file(data_file)[@scenario])
   end
 end

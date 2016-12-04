@@ -1,7 +1,7 @@
 Then(/^I should see all users listed on my homepage$/) do
-  expect(@data.get("param_one")).to eq("one")
+  expect(@data.param_one).to eq("one")
   expect(@users.get("user-one")["id"]).to eq("user-one")
-  expect(@data.get("param_one")).to eq("one")
+  expect(@data.param_one).to eq("one")
   expect(@type).to eq(:transactional)
 end
 
