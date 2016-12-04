@@ -81,9 +81,9 @@ namespace :test do
       task :all => ["test:integration:regression:bigweb", :"test:integration:regression:mobile"]
     end
 
-    multitask :all => ["test:integration:bigweb", :"test:integration:mobile"]
+    task :all => ["test:integration:bigweb", :"test:integration:mobile"]
   end
-  multitask :all => ["test:integration:all", :"test:functional:all"]
+  task :all => ["test:integration:all", :"test:functional:all"]
 end
 
 task(:default => "test:all")
