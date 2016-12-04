@@ -1,4 +1,4 @@
-<% common = "--format pretty -r src"%>
+<% common = "--format pretty -r src pages=./src/pages/bigweb"%>
 
 default     : --profile functional --profile integration
 
