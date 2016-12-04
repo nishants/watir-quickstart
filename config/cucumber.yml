@@ -1,5 +1,5 @@
-<% source = "src"%>
-<% pages  = "./src/pages/bigweb"%>
+<% source = "./src"%>
+<% pages  = ENV['pages']%>
 
 <% common = "--format pretty -r #{source} pages=#{pages}"%>
 

@@ -4,8 +4,8 @@ require 'cucumber/rake/task'
 
 
 namespace :test do
-  def options_for(env_name)
-    "FIG_NEWTON_FILE=#{env_name || "default"}.yml"
+  def options_for(env_name, pages="./src/pages")
+    "FIG_NEWTON_FILE=#{env_name || "default"}.yml pages=#{pages}"
   end
 
   Cucumber::Rake::Task.new(:functional) do |t|
