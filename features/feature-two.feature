@@ -1,6 +1,6 @@
 Feature: View User Details
 
-  @functional @transactional @testparam
+  @functional @regression @transactional @one @stub
   Scenario: Admin does something radically different
     Given I am an "admin"
     Then My username is "admin" and password is "admin@12345"
