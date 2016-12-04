@@ -5,6 +5,6 @@
 
 default     : --profile functional --profile integration
 
-functional  : --tags @functional   url=stubbed --out=reports/functional.html stub=true <%= common %>
+functional  : --tags @functional  --out=reports/functional.html stub=true <%= common %>
 integration : --tags @integration --out=reports/integration.html <%= common %>
 tags        : --out=reports/integration.html <%= common %>
