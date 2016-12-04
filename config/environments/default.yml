@@ -1,8 +1,8 @@
 timeout: 300
 
 urls :
-  default : google.com
-  stubbed: google.com
+  default : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/integration
+  stubbed: file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/functional
   
 data :
   default: config/data/default
