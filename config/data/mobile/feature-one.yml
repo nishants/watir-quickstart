@@ -3,7 +3,7 @@ Admin views user's address history:
 
 Admin does something else:
   param_two : two
-  device: Bigweb
+  device: Mobile
 
 Admin views user's address histories:
   param_three: three

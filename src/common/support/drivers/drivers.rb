@@ -7,9 +7,8 @@ class Drivers
   end
 
   def self.load(browser, device)
-    browser = browser || :chrome
-    load_chrome if browser == :chrome
-    device ? chrome_mobile(browser, device) : desktop(browser)
+    load_chrome if(browser == :chrome)
+    device ? device(browser, device) : desktop(browser)
   end
 
   def self.load_chrome
@@ -21,7 +20,7 @@ class Drivers
     Watir::Browser.new(browser)
   end
 
-  def self.chrome_mobile(browser, device)
+  def self.device(browser, device)
     Watir::Browser.new(browser, :desired_capabilities => chrome_emulated(device))
   end
 

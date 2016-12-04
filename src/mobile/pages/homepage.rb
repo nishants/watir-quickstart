@@ -4,7 +4,7 @@ class HomePage < Page
 
   text_field(:input_text, :name =>  "q")
   button(:press_enter, name: 'btnG')
-  div(:device, id: 'bigweb-label')
+  div(:device, id: 'mobile-label')
 
   def search(key)
     input_text_element.when_present.send_keys(key)

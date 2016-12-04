@@ -23,23 +23,23 @@ end
 namespace :test do
   namespace :functional do
     create(name: "bigweb", profile: "functional", options: options(url: "stubbed", users: "stubbed"))
-    create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
 
     namespace :smoke do
       create(name: "bigweb" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+      create(name: "mobile" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
       task :all => ["test:functional:smoke:bigweb", :"test:functional:smoke:mobile"]
     end
 
     namespace :core do
       create(name: "bigweb" , profile: "functional-core", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional-core", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+      create(name: "mobile" , profile: "functional-core", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
       task :all => ["test:functional:core:bigweb", :"test:functional:core:mobile"]
     end
 
     namespace :regression do
       create(name: "bigweb" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+      create(name: "mobile" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
       task :all => ["test:functional:regression:bigweb", :"test:functional:regression:mobile"]
     end
 

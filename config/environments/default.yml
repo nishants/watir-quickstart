@@ -29,6 +29,8 @@ clients :
       browser: chrome
   firefox:
       browser: firefox
+  ie:
+      browser: ie
   iphone5:
     browser: chrome
     device : Apple iPhone 5
