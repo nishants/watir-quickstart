@@ -7,20 +7,106 @@
     <script src="lib/angular-1.4.3.js"></script>
     <script src="lib/ui-router.js"></script>
     <script src="lib/jquery-3.1.1.min.js"></script>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
 </head>
 
-<body >
+<body ng-app="app">
 
-<form class="form form-inline input-group">
-    <input name="q" placeholder="search">
-    <button name="btnG" class="btn btn-primary">Search</button>
-</form>
+    <form class="form form-inline input-group">
+        <input name="q" placeholder="search">
+        <button name="btnG" class="btn btn-primary">Search</button>
+    </form>
 
-<div>
-    <h1>This is Integrated home</h1>
-    <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
-    <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
-</div>
+    <div>
+        <h1>This is Integrated home</h1>
 
+        <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
+        <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
+    </div>
+
+    <div ui-view></div>
+
+    <div  ng-hide="true">
+        <div id="login-template" ng-non-bindable>
+            <form class="form-inline" role="form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input id="username" type="text" ng-model="form.username" class="form-control input-lg input-search" placeholder="id">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input id="password" type="password" ng-model="form.password" class="form-control input-lg input-search" placeholder="password">
+                </div>
+                <div class="form-group">
+                    <button ng-click="login()" class="btn btn-primary">Login</button>
+                </div>
+                <div class="error" ng-bind="error.message"></div>
+            </form>
+        </div>
+    </div>
+
+<script>
+    var app = angular.module("app", ["ui.router"]);
+
+    app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+        $urlRouterProvider.when("", "/login");
+
+        $stateProvider
+                .state("login", {
+                    url: "/login",
+                    template: $("#login-template").html(),
+                    controller: function ($scope, userService) {
+                        $scope.user = {id: null, password: null};
+                        var loginUser  = function (user) {
+                                    $scope.error = null;
+                                    $scope.user = user;
+                            },
+                            loginError = function (error) {
+                                $scope.error = error;
+                            };
+
+                        $scope.login = function(){
+                            userService.login($scope.form).then(loginUser, loginError);
+                        };
+
+                        $scope.form = {
+                            username: "admin",
+                            password: "admin@12345"
+                        }
+                    }
+                }).state("integration", {
+                    url: "/integration",
+                    template: '<h1>This is {{type}} home</h1><div class="visible-sm">Mobile</div><div class="hidden-sm">Bigweb</div>',
+                    controller: function ($scope, userService) {
+                        $scope.type = 'Integrated';
+                    }
+                })
+    }]);
+
+    app.service("userService", function ($http, $q) {
+        var users = $http.get("server/users.json").then(function (response) {
+            return response.data;
+        });
+
+        return {
+            login: function (form) {
+                var deferred = $q.defer();
+                users.then(function (users) {
+                    var found = users.filter(function(user){
+                        return form.username == user.id && form.password == user.password
+                    }), user;
+
+                    user = found[0];
+                    user ? deferred.resolve(user) : deferred.reject({message: "Incorrect username/password."});
+                });
+                return deferred.promise;
+            }
+        };
+    })
+</script>
 </body>
 </html>
