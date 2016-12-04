@@ -36,6 +36,12 @@ namespace :test do
       task :all => ["test:functional:core:bigweb", :"test:functional:core:mobile"]
     end
 
+    namespace :regression do
+      create(name: "bigweb" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed"))
+      create(name: "mobile" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+      task :all => ["test:functional:regression:bigweb", :"test:functional:regression:mobile"]
+    end
+
     multitask :all => ["test:functional:bigweb", :"test:functional:mobile"]
   end
 
@@ -55,8 +61,12 @@ namespace :test do
       task :all => ["test:integration:core:bigweb", :"test:integration:core:mobile"]
     end
 
-    create(name: "smoke", profile: "integration-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
-    create(name: "core", profile: "integration-core", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    namespace :regression do
+      create(name: "bigweb" , profile: "integration-regression", options: options)
+      create(name: "mobile" , profile: "integration-regression", options: options(page_dir: "mobile", data_suite: "mobile"))
+      task :all => ["test:integration:regression:bigweb", :"test:integration:regression:mobile"]
+    end
+
     multitask :all => ["test:integration:bigweb", :"test:integration:mobile"]
   end
   multitask :all => ["test:integration:all", :"test:functional:all"]
