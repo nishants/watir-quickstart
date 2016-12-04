@@ -1,7 +1,9 @@
 base_url: google.com
 timeout: 300
 
-data: config/data/default
+data :
+  default: config/data/default
+  mobile: config/data/mobile
 
 stub :
   wiremock :
