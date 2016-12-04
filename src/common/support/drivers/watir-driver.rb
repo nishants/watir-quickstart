@@ -7,7 +7,7 @@ class WatirDriver
   end
 
   def self.load_chrome
-    chromedriver_path = File.join(File.absolute_path('../../..', File.dirname(__FILE__)), "config/drivers", "chromedriver")
+    chromedriver_path = File.join(File.absolute_path('../../..', File.dirname(__FILE__)), "../config/drivers", "chromedriver")
     Selenium::WebDriver::Chrome.driver_path = chromedriver_path
   end
 

@@ -1,4 +1,4 @@
-<% source = "./src"%>
+<% source = "./src/common"%>
 <% pages  = ENV['pages']%>
 
 <% common = "--format pretty -r #{source} pages=#{pages}"%>

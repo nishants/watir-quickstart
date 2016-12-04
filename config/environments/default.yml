@@ -6,8 +6,8 @@ data :
   mobile: config/data/mobile
 
 pages:
-  default : ./src/pages
-  mobile  : src/mobile/pages/
+  default : ./src/bigweb/pages
+  mobile  : ./src/mobile/pages/
 
 stub :
   wiremock :

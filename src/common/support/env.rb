@@ -5,7 +5,7 @@ require 'fig_newton'
 pages_dir = FigNewton.pages.send(ENV["pages"])
 require "#{pages_dir}/page"
 
-Dir[File.expand_path(File.join(File.dirname(File.absolute_path(__FILE__)), pages_dir)) + "/**/*.rb"].each do |file|
+Dir["#{pages_dir}/**/*.rb"].each do |file|
   require file
 end
 
