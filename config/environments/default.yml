@@ -2,11 +2,11 @@ timeout: 300
 
 urls :
   default : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/integration
-  stubbed: file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/functional
+  stubbed : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/functional
   
 data :
-  default: config/data/default
-  mobile: config/data/mobile
+  default : config/data/default
+  mobile  : config/data/mobile
 
 page_dir:
   default : ./src/bigweb/pages
@@ -18,12 +18,17 @@ users :
 
 stub :
   wiremock :
-    jar  : wiremock-standalone-2.3.1
-    path : config/stub
-    port : 8081
-    root_dir : config/stub
-    verbose : false
+    jar       : wiremock-standalone-2.3.1
+    path      : config/stub
+    port      : 8081
+    root_dir  : config/stub
+    verbose   : false
 
-driver :
-  browser: chrome
-  device: Apple iPhone 5
+clients :
+  default:
+      browser: chrome
+  firefox:
+      browser: firefox
+  iphone5:
+    browser: chrome
+    device : Apple iPhone 5

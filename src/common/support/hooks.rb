@@ -3,7 +3,9 @@ Before do
   @data_suite    = DataSuite.new(data_dir)
   users_file = FigNewton.users.send(ENV["users"])
   @users   = Users.new(YAML.load_file(users_file))
-  @browser = Drivers.get(ENV["browser"], ENV["device"])
+  client = FigNewton.clients.send(ENV["client"])
+
+  @browser = Drivers.get(client)
 end
 
 After do

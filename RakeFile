@@ -7,9 +7,10 @@ def options(config_file:  ENV["env"] || "default",
             data_suite:   "default",
             url:          "default",
             report_file:  "./reports/index.html",
+            client:       "default",
             users:        "default")
 
-  "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url} --out=#{report_file} users=#{users}"
+  "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url} --out=#{report_file} users=#{users} client=#{client}"
 end
 
 def create(name: , options:, profile: )
