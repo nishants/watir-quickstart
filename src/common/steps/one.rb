@@ -1,8 +1,3 @@
-Given(/^I am an admin$/) do
-  puts "login admin"
-end
-
-
 When(/^I view a user's address$/) do
   visit(HomePage)
   on(HomePage).search("cucumber")
@@ -22,7 +17,7 @@ Given(/^I am an "([^"]*)"$/) do |user|
   expect(@users.get(user).nil?).to eq(false)
 end
 
-Given(/^Then my username is "([^"]*)" and password is "([^"]*)"$/) do |expected_id, expected_password|
+Given(/^My username is "([^"]*)" and password is "([^"]*)"$/) do |expected_id, expected_password|
   expect(@user.id).to eq(expected_id)
   expect(@user.password).to eq(expected_password)
 end
