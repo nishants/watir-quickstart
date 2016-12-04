@@ -25,7 +25,7 @@ Feature: View User Details
     When I view a user's address
     Then I should see their address and past addresses with duration of stay
 
-  @integration @core @transactional
+  @integration @core @transactional @two
   Scenario: Admin views user's address histories
     Given I am an "admin"
     Then My username is "admin" and password is "admin@12345"
@@ -33,7 +33,7 @@ Feature: View User Details
     When I view a user's address
     Then I should see their address and past addresses with duration of stay
 
-  @integration @regression @transactional
+  @integration @regression @transactional @one
   Scenario: Admin views user's address histories
     Given I am an "admin"
     Then My username is "admin" and password is "admin@12345"

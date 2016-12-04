@@ -15,7 +15,13 @@
 </head>
 
 <body ng-app="app">
-
+<div >
+    <label ng-bind="users.current.name"></label>
+    <div>
+        <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
+        <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
+    </div>
+</div>
     <form class="form form-inline input-group">
         <input name="q" placeholder="search">
         <button name="btnG" class="btn btn-primary">Search</button>
@@ -58,8 +64,8 @@
             <div ng-show="users.current.id">
                 <label ng-bind="users.current.name"></label>
                 <div>
-                    <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
-                    <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
+                    <div id="mobile-labelx" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
+                    <div id="bigweb-labelx" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
                 </div>
             </div>
         </div>

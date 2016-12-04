@@ -1,6 +1,7 @@
 <% source     = "./src/common"%>
 <% smoke      = "--tags ~@regression --tags ~@core"%>
 <% core       = "--tags ~@regression --tags ~@smoke"%>
+<% tag       = "@one"%>
 <% regression = "--tags ~@core --tags ~@smoke"%>
 <% common     = "--format pretty -r #{source}"%>
 
@@ -13,5 +14,3 @@ integration             : --tags @integration           <%= common %>
 integration-smoke       : --tags @integration           <%= common %>  <%= smoke %>
 integration-core        : --tags @integration           <%= common %>  <%= core %>
 integration-regression  : --tags @integration           <%= common %>  <%= regression %>
-
-tags                    :  <%= common %>

@@ -8,9 +8,10 @@ def options(config_file:  ENV["env"] || "default",
             url:          "default",
             report_file:  "./reports/index.html",
             client:       "default",
-            users:        "default")
+            users:        "default",
+            tags:          ENV["tags"] || nil)
 
-  "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url} --out=#{report_file} users=#{users} client=#{client}"
+  "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url} --out=#{report_file} users=#{users} client=#{client} #{("--tags " + tags) unless tags.nil?}"
 end
 
 def create(name: , options:, profile: )
@@ -24,6 +25,12 @@ namespace :test do
   namespace :functional do
     create(name: "bigweb", profile: "functional", options: options(url: "stubbed", users: "stubbed"))
     create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
+
+    namespace :tag do
+      create(name: "bigweb" , profile: "functional", options: options(url: "stubbed", users: "stubbed"))
+      create(name: "mobile" , profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
+      task :all => ["test:functional:tag:bigweb", :"test:functional:tag:mobile"]
+    end
 
     namespace :smoke do
       create(name: "bigweb" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed"))
@@ -49,6 +56,12 @@ namespace :test do
   namespace :integration do
     create(name: "bigweb", profile: "integration", options: options)
     create(name: "mobile", profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
+
+    namespace :tag do
+      create(name: "bigweb" , profile: "integration", options: options)
+      create(name: "mobile" , profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
+      task :all => ["test:integration:tag:bigweb", :"test:integration:tag:mobile"]
+    end
 
     namespace :smoke do
       create(name: "bigweb" , profile: "integration-smoke", options: options)
