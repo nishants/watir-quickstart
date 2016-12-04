@@ -1,7 +1,8 @@
 Before do
   data_dir = FigNewton.data.send(ENV["data_suite"])
   @data_suite    = DataSuite.new(data_dir)
-  @users   = Users.new(YAML.load_file("#{data_dir}/users.yml"))
+  users_file = FigNewton.users.send(ENV["users"])
+  @users   = Users.new(YAML.load_file(users_file))
   @browser = Drivers.get(ENV["browser"], ENV["device"])
 end
 

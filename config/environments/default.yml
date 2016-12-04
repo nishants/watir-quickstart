@@ -12,6 +12,10 @@ page_dir:
   default : ./src/bigweb/pages
   mobile  : ./src/mobile/pages
 
+users :
+  default : config/data/default/users.yml
+  stubbed : config/data/default/users.yml
+
 stub :
   wiremock :
     jar  : wiremock-standalone-2.3.1
