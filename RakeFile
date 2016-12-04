@@ -2,33 +2,30 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-def options_for(config_file: ENV["env"] || "default", page_dir:"default", data_suite:"default", url: "default")
+def options(config_file: ENV["env"] || "default", page_dir:"default", data_suite:"default", url: "default")
   "FIG_NEWTON_FILE=#{config_file}.yml page_dir=#{page_dir} data_suite=#{data_suite} url=#{url}"
 end
 
-
-def create_profile(profile_name, options)
-  Cucumber::Rake::Task.new(profile_name) do |t|
-    t.profile = "#{profile_name}"
+def create(name: , options:, profile: )
+  Cucumber::Rake::Task.new(name) do |t|
+    t.profile = "#{profile}"
     t.cucumber_opts = options
   end
 end
 
 namespace :test do
-  create_profile(:functional  ,    options_for(url: "stubbed"))
-  create_profile(:integration ,    options_for)
-  create_profile(:tags        , "#{options_for} --tags #{ENV["tags"]}")
-
-  namespace :mobile do
-    create_profile(:functional  ,    options_for(page_dir: "mobile", data_suite: "mobile", url: "stubbed"))
-    create_profile(:integration ,    options_for(page_dir: "mobile", data_suite: "mobile"))
-    create_profile(:tags        , "#{options_for(page_dir: "mobile", data_suite: "mobile")} --tags #{ENV["tags"]}")
-
-    multitask :all => ["test:mobile:integration", :"test:mobile:functional"]
+  namespace :functional do
+    create(name: "bigweb", profile: "functional", options: options(url: "stubbed"))
+    create(name: "mobile", profile: "functional", options: options(url: "stubbed", page_dir: "mobile", data_suite: "mobile"))
+    multitask :all => ["test:functional:bigweb", :"test:functional:mobile"]
   end
-
-  multitask :all => ["test:integration", :"test:functional"]
+  namespace :integration do
+    create(name: "bigweb", profile: "integration", options: options)
+    create(name: "mobile", profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile"))
+    multitask :all => ["test:integration:bigweb", :"test:integration:mobile"]
+  end
+  multitask :all => ["test:integration:all", :"test:functional:all"]
 end
 
-task(:default => ["test:all", "test:mobile:all"])
+task(:default => "test:all")
 
