@@ -2,10 +2,10 @@ require 'rubygems'
 require 'cucumber'
 require 'cucumber/rake/task'
 
-def options_for(env_name, pages="default", data_suite="default")
-  config_file = env_name || "default"
+def options_for(config_file: ENV["env"] || "default", pages:"default", data_suite:"default")
   "FIG_NEWTON_FILE=#{config_file}.yml pages=#{pages} data_suite=#{data_suite}"
 end
+
 
 def create_profile(profile_name, options)
   Cucumber::Rake::Task.new(profile_name) do |t|
@@ -15,14 +15,14 @@ def create_profile(profile_name, options)
 end
 
 namespace :test do
-  create_profile(:functional  , options_for(ENV["env"]))
-  create_profile(:integration , options_for(ENV["env"]))
-  create_profile(:tags        , "#{options_for(ENV["env"])} --tags #{ENV["tags"]}")
+  create_profile(:functional  ,    options_for)
+  create_profile(:integration ,    options_for)
+  create_profile(:tags        , "#{options_for} --tags #{ENV["tags"]}")
 
   namespace :mobile do
-    create_profile(:functional  , options_for(ENV["env"], "mobile", "mobile"))
-    create_profile(:integration , options_for(ENV["env"], "mobile", "mobile"))
-    create_profile(:tags        , "#{options_for(ENV["env"], "mobile", "mobile")} --tags #{ENV["tags"]}")
+    create_profile(:functional  ,    options_for(pages: "mobile", data_suite: "mobile"))
+    create_profile(:integration ,    options_for(pages: "mobile", data_suite: "mobile"))
+    create_profile(:tags        , "#{options_for(pages: "mobile", data_suite: "mobile")} --tags #{ENV["tags"]}")
 
     multitask :all => ["test:mobile:integration", :"test:mobile:functional"]
   end
