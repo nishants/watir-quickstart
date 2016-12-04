@@ -7,7 +7,7 @@ rake test:<functional|integration>:<tag>:<mobile|bigweb|all> tags=@tag [options]
 
 ### By Priority
 ```bash
-rake test:<functional|integration>:<smoke|core|regression>:<mobile|bigweb|all>
+rake test:<functional|integration>:<smoke|core|regression>:<mobile|bigweb|all> [options]
 ```
 - example
 ```bash
@@ -19,7 +19,7 @@ rake test:integration:core:mobile
 
 ### By test type
 ```bash
-rake test:<functional|integration>:<mobile|bigweb|all>
+rake test:<functional|integration>:<mobile|bigweb|all> [options]
 ```
 
 ### Options
