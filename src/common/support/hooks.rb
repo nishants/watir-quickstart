@@ -13,7 +13,7 @@ After do
 end
 
 Before('@stub') do
-  @stub = Stub.ready(FigNewton.stub.wiremock)
+  # @stub = Stub.ready(FigNewton.stub.wiremock)
 end
 
 Before('@transactional') do

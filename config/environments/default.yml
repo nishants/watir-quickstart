@@ -16,7 +16,7 @@ users :
 
 stub :
   wiremock :
-    jar       : wiremock-standalone-2.3.1
+    jar       : standalone-2.3.1
     path      : config/stub
     port      : 8081
     root_dir  : config/stub
