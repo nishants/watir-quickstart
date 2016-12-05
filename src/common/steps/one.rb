@@ -9,7 +9,6 @@ end
 Then(/^I invoke "([^"]*)" on @data, I get value "([^"]*)"$/) do |param_name, expected|
   expect(@data.send(param_name)).to eq(expected)
   expect(@data.send(param_name)).to eq(expected)
-  expect(@type).to eq(:transactional)
 end
 
 Given(/^I am an "([^"]*)"$/) do |user|

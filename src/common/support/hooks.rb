@@ -12,13 +12,6 @@ After do
   @browser.close
 end
 
-Before('@stub') do
-  # @stub = Stub.ready(FigNewton.stub.wiremock)
-end
-
-Before('@transactional') do
-  @type = :transactional;
-end
 
 Before do |scenario|
   feature_path   = scenario.feature.all_locations.first.to_s.split("features/")[1].split(":").first.strip.split(".feature").first.strip
