@@ -8,7 +8,7 @@ class DataSuite
 
   def load(feature_path, scenario_name)
     file = "#{@path}/#{feature_path}.yml"
-    data = YAML.load_file(file)[scenario_name]
-    OpenStruct.new(data)
+    data = YAML.load_file(file)
+    OpenStruct.new(data[scenario_name]) unless (data == false)
   end
 end

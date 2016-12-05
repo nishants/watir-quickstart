@@ -8,26 +8,9 @@
     <script src="lib/ui-router.js"></script>
     <script src="lib/jquery-3.1.1.min.js"></script>
     <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
-    <style>
-        .error{
-            color: red;
-        }
-    </style>
 </head>
 
 <body ng-app="app">
-<div >
-    <label ng-bind="users.current.name"></label>
-    <div>
-        <div id="mobile-label" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
-        <div id="bigweb-label" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
-    </div>
-</div>
-    <form class="form form-inline input-group">
-        <input name="q" placeholder="search">
-        <button name="btnG" class="btn btn-primary">Search</button>
-    </form>
-
     <div ui-view></div>
 
 <script>

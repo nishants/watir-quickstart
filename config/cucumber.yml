@@ -3,7 +3,7 @@
 <% core       = "--tags ~@regression --tags ~@smoke"%>
 <% tag       = "@one"%>
 <% regression = "--tags ~@core --tags ~@smoke"%>
-<% common     = "--format pretty -r #{source}"%>
+<% common     = "--tags ~@skip --format pretty -r #{source}"%>
 
 functional              : --tags @functional  stub=true <%= common %>
 functional-smoke        : --tags @functional  stub=true <%= common %>   <%= smoke %>
