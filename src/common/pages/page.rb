@@ -11,4 +11,7 @@ class Page
   def self.login_url
     "#{ENV.fetch("url")}"
   end
+  def rows_of(element)
+    element.rows.map{|row| row.cells.map{|cell| cell.text}}.drop(1)
+  end
 end
