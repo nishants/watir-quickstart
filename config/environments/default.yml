@@ -3,7 +3,7 @@ urls :
   stubbed : http://localhost:8389/rubycumwatir/app/index.html
   
 data :
-  default : config/data/default
+  default : config/data/bigweb
   mobile  : config/data/mobile
 
 page_dir:
