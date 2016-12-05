@@ -1,4 +1,4 @@
-class DashboardPage < Page
+class Dashboard < Page
   page_url login_url
   label(:message,       :name =>  "mobile-message")
   button(:view_users,     :id =>  "current-users")

@@ -10,6 +10,7 @@ rake test:tag tags=@dashboard
 rake test:tag tags=@account,@dashboard
 
 rake test:tag:mobile tags=@dashboard
+rake test:tag:bigweb tags=@dashboard client=firefox
 
 rake test:functional:tag:all tags=@one
 rake test:integration:tag:mobile tags=@one

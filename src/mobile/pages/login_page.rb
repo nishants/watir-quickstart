@@ -1,4 +1,4 @@
-class LoginPage < Page
+class Login < Page
 
   page_url login_url
   text_field(:user_name, :name =>  "username")
