@@ -1,4 +1,4 @@
 
 admin:
- id: admin
+ username: admin
  password: admin@12345

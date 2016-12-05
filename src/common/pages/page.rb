@@ -5,4 +5,7 @@ class Page
   def self.base_url
     "#{ENV.fetch("url")}"
   end
+  def self.login_url
+    "#{ENV.fetch("url")}"
+  end
 end

@@ -1,6 +1,6 @@
 urls :
-  default : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/integration
-  stubbed : file:///Users/dawn/Documents/projects/rubycumwatir/app/index.html#/functional
+  default : http://localhost:8389/rubycumwatir/app/index.html
+  stubbed : http://localhost:8389/rubycumwatir/app/index.html
   
 data :
   default : config/data/default

@@ -37,8 +37,8 @@
     <div  ng-hide="true">
         <div id="login-template" ng-non-bindable>
             <div ng-show="user.id">
-                <label class="visible-xs visible-sm hidden-lg hidden-md">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
-                <label class="visible-lg visible-md hidden-xs hidden-sm">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
+                <label name="mobile-message" class="visible-xs visible-sm hidden-lg hidden-md">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
+                <label name="bigweb-message" class="visible-lg visible-md hidden-xs hidden-sm">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
 
                 <div>
                     <a class="btn btn-default" ui-sref="dashboard">dashboard</a>
@@ -46,15 +46,15 @@
             </div>
             <form class="form-inline" role="form" ng-hide="user.id">
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <input id="username" type="text" ng-model="form.username" class="form-control input-lg input-search" placeholder="id">
+                    <label >Username</label>
+                    <input name="username" type="text" ng-model="form.username" class="form-control input-lg input-search" placeholder="id">
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input id="password" type="password" ng-model="form.password" class="form-control input-lg input-search" placeholder="password">
+                    <label >Password</label>
+                    <input name="password" type="password" ng-model="form.password" class="form-control input-lg input-search" placeholder="password">
                 </div>
                 <div class="form-group">
-                    <button ng-click="login()" class="btn btn-primary">Login</button>
+                    <button name="login-user" ng-click="login()" class="btn btn-primary">Login</button>
                 </div>
                 <div class="error" ng-bind="error.message"></div>
             </form>
@@ -96,8 +96,8 @@
                         };
 
                         $scope.form = {
-                            username: "admin",
-                            password: "admin@12345"
+                            username: null,
+                            password: null
                         }
                     }
                 }).state("dashboard", {

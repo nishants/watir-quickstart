@@ -20,7 +20,7 @@ Given(/^I am an "([^"]*)"$/) do |user|
 end
 
 Given(/^My username is "([^"]*)" and password is "([^"]*)"$/) do |expected_id, expected_password|
-  expect(@user.id).to eq(expected_id)
+  expect(@user.username).to eq(expected_id)
   expect(@user.password).to eq(expected_password)
 end
 

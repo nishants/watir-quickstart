@@ -1,0 +1,7 @@
+Dashboard for admin user:
+  user_name : admin
+  get_user_message: "Welcome Admin Singh on bigweb"
+  active_users: [
+    ["User One","user-one@mails.com","10 Minutes"],
+    ["User Two","user-two@mails.com","9 hours, 10 Minutes"]
+  ]
