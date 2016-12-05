@@ -1,9 +1,13 @@
 
 class Drivers
+  def self.client
+    @@client
+  end
+
   def self.get(client)
     browser = client.browser.to_sym
     device  = client.to_hash["device"]
-    load(browser, device)
+    @@client = load(browser, device)
   end
 
   def self.load(browser, device)
