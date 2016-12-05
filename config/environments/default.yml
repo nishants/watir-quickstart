@@ -11,8 +11,8 @@ page_dir:
   mobile  : ./src/mobile/pages
 
 users :
-  default : config/data/default/users.yml
-  stubbed : config/data/default/users.yml
+  default : config/users.yml
+  stubbed : config/users.yml
 
 stub :
   wiremock :
