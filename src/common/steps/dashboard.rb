@@ -13,3 +13,19 @@ And(/^I can see all active users listed on my dashboard$/) do
   actual    = on(Dashboard).active_users
   expect(actual).to eq(expected)
 end
+
+Given(/^I am "([^"]*)"$/) do |user_name|
+  visit(Login).login(@users.get(user_name))
+end
+
+And(/^I can see all active users table$/) do
+  expected  = @data.active_users
+  actual    = on(Dashboard).active_users
+  expect(actual).to look_like(expected)
+end
+
+Then(/^I can see my name on dashboard$/) do
+  expected  = @data.welcome_message
+  actual    = on(Dashboard).get_user_message
+  expect(actual).to look_like(expected)
+end

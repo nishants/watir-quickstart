@@ -2,3 +2,8 @@
 admin:
  username: admin
  password: admin@12345
+
+guest:
+ username: guest
+ password: guest@12345
+

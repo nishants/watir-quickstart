@@ -8,3 +8,4 @@ gem "watir-webdriver"
 gem 'fig_newton'
 gem 'page-object'
 gem 'service_mock'
+gem 'look_like'

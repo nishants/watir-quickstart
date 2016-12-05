@@ -1,6 +1,7 @@
 require 'rspec'
 require 'watir-webdriver'
 require 'fig_newton'
+require 'look_like'
 
 def load_pages
   ENV["url"] = FigNewton.urls.send(ENV["url"] || "default")

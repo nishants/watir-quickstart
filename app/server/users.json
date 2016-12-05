@@ -9,5 +9,16 @@
         ["User Two","user-two@mails.com","9 hours, 10 Minutes"]
       ]
     }
+  },
+  {
+    "id": "guest",
+    "password": "guest@12345",
+    "name": "Guest Singh",
+    "data" : {
+      "active_users": [
+        ["Friend User One","friend-user-one@mails.com"],
+        ["Friend User Two","Friend"]
+      ]
+    }
   }
 ]
