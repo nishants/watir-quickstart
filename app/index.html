@@ -7,6 +7,7 @@
     <script src="lib/angular-1.4.3.js"></script>
     <script src="lib/ui-router.js"></script>
     <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
     <style>
         .error{
             color: red;
@@ -30,20 +31,30 @@
     <div ui-view></div>
 
 <script>
-    var app = angular.module("app", ["ui.router"]);
+    var app = angular.module("app", ["ui.router", "ngStorage"]);
+
+    app.run(function ($rootScope, $state, $localStorage) {
+        var onLocationChange = function (event, next, current) {
+            if (!$localStorage.user && next.templateUrl != 'login.html') {
+                $state.go('login');
+            }
+            $rootScope.user = $localStorage.user;
+        };
+        $rootScope.$on('$locationChangeStart', onLocationChange);
+
+    });
 
     app.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
-        $urlRouterProvider.when("", "/login");
 
         $stateProvider
                 .state("login", {
                     url: "/login",
                     templateUrl: "templates/login.html",
-                    controller: function ($scope, userService) {
-                        $scope.user = {id: null, password: null};
+                    controller: function ($scope, userService, $localStorage) {
                         var loginUser  = function (user) {
                                     $scope.error = null;
                                     $scope.user = user;
+                                    $localStorage.user = user;
                             },
                             loginError = function (error) {
                                 $scope.error = error;
@@ -59,10 +70,9 @@
                         }
                     }
                 }).state("dashboard", {
-                    url: "/dashboard",
+                    url: "/",
                     templateUrl: "templates/dashboard.html",
                     controller: function ($scope, userService) {
-                        $scope.users = userService;
                     }
                 })
     }]);
