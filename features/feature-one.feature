@@ -1,11 +1,5 @@
 Feature: View User Details
 
-  @integration @core @dashboard
-  Scenario: Dashboard for admin user
-    Given I am the "admin-user"
-    Then I can see my name on dashboard
-    And I can see all active users on my dashboard
-
   @functional @core @transactional @one @stub
   Scenario: Admin views user's address history
     Given I am an "admin"
