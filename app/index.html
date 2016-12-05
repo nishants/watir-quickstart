@@ -27,49 +27,7 @@
         <button name="btnG" class="btn btn-primary">Search</button>
     </form>
 
-    <div>
-        <h1>This is Integrated home</h1>
-
-    </div>
-
     <div ui-view></div>
-
-    <div  ng-hide="true">
-        <div id="login-template" ng-non-bindable>
-            <div ng-show="user.id">
-                <label name="mobile-message" class="visible-xs visible-sm hidden-lg hidden-md">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
-                <label name="bigweb-message" class="visible-lg visible-md hidden-xs hidden-sm">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
-
-                <div>
-                    <a class="btn btn-default" ui-sref="dashboard">dashboard</a>
-                </div>
-            </div>
-            <form class="form-inline" role="form" ng-hide="user.id">
-                <div class="form-group">
-                    <label >Username</label>
-                    <input name="username" type="text" ng-model="form.username" class="form-control input-lg input-search" placeholder="id">
-                </div>
-                <div class="form-group">
-                    <label >Password</label>
-                    <input name="password" type="password" ng-model="form.password" class="form-control input-lg input-search" placeholder="password">
-                </div>
-                <div class="form-group">
-                    <button name="login-user" ng-click="login()" class="btn btn-primary">Login</button>
-                </div>
-                <div class="error" ng-bind="error.message"></div>
-            </form>
-        </div>
-
-        <div id="dashboard-template">
-            <div ng-show="users.current.id">
-                <label ng-bind="users.current.name"></label>
-                <div>
-                    <div id="mobile-labelx" class="visible-xs visible-sm hidden-lg hidden-md">Mobile</div>
-                    <div id="bigweb-labelx" class="device visible-lg visible-md hidden-xs hidden-sm">Bigweb</div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 <script>
     var app = angular.module("app", ["ui.router"]);
@@ -80,7 +38,7 @@
         $stateProvider
                 .state("login", {
                     url: "/login",
-                    template: $("#login-template").html(),
+                    templateUrl: "templates/login.html",
                     controller: function ($scope, userService) {
                         $scope.user = {id: null, password: null};
                         var loginUser  = function (user) {
@@ -102,12 +60,30 @@
                     }
                 }).state("dashboard", {
                     url: "/dashboard",
-                    template: $("#dashboard-template").html(),
+                    templateUrl: "templates/dashboard.html",
                     controller: function ($scope, userService) {
                         $scope.users = userService;
                     }
                 })
     }]);
+
+    app.directive("mobileOnly", function(){
+        return {
+            restrict: "C",
+            link: function(scope, element){
+                element.addClass("visible-xs visible-sm hidden-lg hidden-md");
+            }
+        };
+    });
+
+    app.directive("noMobile", function(){
+        return {
+            restrict: "C",
+            link: function(scope, element){
+                element.addClass("visible-lg visible-md hidden-xs hidden-sm");
+            }
+        };
+    });
 
     app.service("userService", function ($http, $q) {
         var users = $http.get("server/users.json").then(function (response) {

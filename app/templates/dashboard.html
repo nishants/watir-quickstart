@@ -1,0 +1,23 @@
+<div ng-show="users.current.id">
+    <label ng-bind="users.current.name"></label>
+    <div>
+        <div id="mobile-labelx" class="mobile-only">Mobile</div>
+        <div id="bigweb-labelx" class="no-mobile">Bigweb</div>
+    </div>
+    <table id="active-users" class="table no-mobile" ng-init='data = [["User One","user-one@mails.com","10 Minutes"],["User Two","user-two@mails.com","9 hours, 10 Minutes"]]'>
+        <thead>
+        <tr>
+            <th>Full name</th>
+            <th>email</th>
+            <th>Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in data">
+            <td ng-bind="user[0]"></td>
+            <td ng-bind="user[1]"></td>
+            <td ng-bind="user[2]"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

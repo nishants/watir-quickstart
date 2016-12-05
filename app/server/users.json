@@ -1,3 +1,13 @@
 [
-  {"id": "admin", "password": "admin@12345", "name": "Admin Singh" }
+  {
+    "id": "admin",
+    "password": "admin@12345",
+    "name": "Admin Singh",
+    "data" : {
+      "active_users": [
+        ["User One","user-one@mails.com","10 Minutes"],
+        ["User Two","user-two@mails.com","9 hours, 10 Minutes"]
+      ]
+    }
+  }
 ]
