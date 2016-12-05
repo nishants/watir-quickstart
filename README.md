@@ -6,9 +6,12 @@ rake test:<functional|integration>:<tag>:<mobile|bigweb|all> tags=@tag [options]
 ```
 - example
 ```bash
+rake test:tag tags=@dashboard
+rake test:tag tags=@account,@dashboard
+
+rake test:tag:mobile tags=@dashboard
+
 rake test:functional:tag:all tags=@one
-rake test:functional:tag:bigweb tags=@two
-rake test:integration:tag:all tags=@two
 rake test:integration:tag:mobile tags=@one
 
 ```
