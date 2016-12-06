@@ -71,23 +71,24 @@
                             },
                             values: {
                                 username: "guest",
-                                email   : null,
-                                full_name: null,
-                                role     : null,
+                                email   : "guest@123.com",
+                                full_name: "Guest Singh",
+                                role     : "guest",
                                 terms_accepted: false,
                             },
                             reset: function(){
-                                form.username = null;
-                                form.email = null;
-                                form.full_name = null;
-                                form.role = null;
-                                form.terms_accepted = false;
+                                form.values.username = null;
+                                form.values.email = null;
+                                form.values.full_name = null;
+                                form.values.role = null;
+                                form.values.terms_accepted = false;
                             },
                             getValue: function(){
-                                return [form.username, form.email, ""];
+                                return [form.values.full_name, form.values.email, ""];
                             },
                             submit: function(){
                                 userService.create(form.getValue()).then(function(data){
+                                    form.reset();
                                     $scope.user.data = data;
                                 });
                                 $state.go("users");
