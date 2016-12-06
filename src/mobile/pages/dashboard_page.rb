@@ -1,7 +1,7 @@
 class Dashboard < Page
   page_url login_url
   label(:message,       :name =>  "mobile-message")
-  button(:view_users,     :id =>  "current-users")
+  link(:view_users,     :id =>  "current-users")
 
   def get_user_message
     message_element.when_present.text

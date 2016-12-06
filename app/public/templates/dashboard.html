@@ -1,23 +1,12 @@
-<div ng-show="user.id">
-    <label ng-bind="user.name"></label>
-    <div>
-        <div id="mobile-labelx" class="mobile-only">Mobile</div>
-        <div id="bigweb-labelx" class="no-mobile">Bigweb</div>
+<div class="card">
+    <div class="card-block">
+        <div ng-show="user.id">
+            <label name="mobile-message" class="visible-xs visible-sm hidden-lg hidden-md">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
+            <label name="bigweb-message" class="visible-lg visible-md hidden-xs hidden-sm">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
+
+            <div>
+                <a id="current-users" class="btn btn-default" ui-sref="users">View Users</a>
+            </div>
+        </div>
     </div>
-    <table id="active-users" class="table no-mobile" ng-init='data = [["User One","user-one@mails.com","10 Minutes"],["User Two","user-two@mails.com","9 hours, 10 Minutes"]]'>
-        <thead>
-        <tr>
-            <th>Full name</th>
-            <th>email</th>
-            <th>Duration</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="user in data">
-            <td ng-bind="user[0]"></td>
-            <td ng-bind="user[1]"></td>
-            <td ng-bind="user[2]"></td>
-        </tr>
-        </tbody>
-    </table>
 </div>
