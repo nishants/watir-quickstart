@@ -1,4 +1,4 @@
-class CreateAccountPage < Page
+class CreateAccountForm < Page
 
   def fill_form(form)
     @browser.text_field(:name =>  "email").when_present.set(form["email"])
@@ -7,12 +7,22 @@ class CreateAccountPage < Page
     @browser.select_list(:name =>  "select-role").when_present.select(form["role"])
   end
 
-  def reset_name
-    @browser.text_field(:name =>  "username").when_present.set("")
+  def fill_all_except_mail(data)
+    fill_form(data)
+    @browser.text_field(:name =>  "email").when_present.set("")
+    save
   end
 
-  def reset_email
-    @browser.text_field(:name =>  "email").when_present.set("")
+  def fill_all_except_role(data)
+    fill_form(data)
+    @browser.select_list(:name => "select-role").when_present.option(:index => 0).select
+    save
+  end
+
+  def fill_all_except_user_name(data)
+    fill_form(data)
+    @browser.text_field(:name =>  "username").when_present.set("")
+    save
   end
 
   def name_error
@@ -25,10 +35,6 @@ class CreateAccountPage < Page
 
   def email_error
      @browser.element(:class => "email-error").when_present.text
-  end
-
-  def reset_role
-    @browser.select_list(:name => "select-role").when_present.option(:index => 0).select
   end
 
   def confirm

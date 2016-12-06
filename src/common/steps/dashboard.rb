@@ -11,7 +11,7 @@ end
 And(/^I can see all active users listed on my dashboard$/) do
   on(Dashboard).view_users
   expected  = @data.active_users
-  actual    = on(Dashboard).get_users
+  actual    = on(AccountsPage).get_users
   expect(actual).to eq(expected)
 end
 
@@ -23,7 +23,7 @@ And(/^I can see all active users table$/) do
   on(Dashboard).view_users
 
   expected  = @data.active_users
-  actual    = on(Dashboard).get_users
+  actual    = on(AccountsPage).get_users
   expect(actual).to look_like(expected)
 end
 

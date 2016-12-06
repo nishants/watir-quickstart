@@ -9,9 +9,4 @@ class Dashboard < Page
   def view_users
     view_users_element.when_present.click
   end
-
-  def get_users
-    browser_table = @browser.table(:id => "users").when_present
-    rows_of(browser_table)
-  end
 end
