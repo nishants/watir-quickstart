@@ -25,19 +25,19 @@ And(/^I am not allowed to create account without email$/) do
   expect(on(CreateAccountPage).email_error).to eq(@data.email_error)
 end
 
-When(/^I create account$/) do
+When(/^I enter all fields and save account$/) do
   on(CreateAccountPage).fill_form(@data.form_data)
   on(CreateAccountPage).save
+end
+
+Then(/^I review user details and confirm$/) do
+  on(CreateAccountPage).confirm
 end
 
 Then(/^I can see account listed on accounts page$/) do
   expected  = @data.expected_users
   actual    = on(Dashboard).get_users
   expect(actual).to eq(expected)
-end
-
-Then(/^I am asked to review user details$/) do
-  on(CreateAccountPage).confirm
 end
 
 And(/^I can see all users table$/) do

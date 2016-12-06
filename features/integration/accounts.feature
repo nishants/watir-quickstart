@@ -7,6 +7,6 @@ Feature: Dashboard
     And   I am not allowed to create account without username
     And   I am not allowed to create account without role
     And   I am not allowed to create account without email
-    When  I create account
-    Then  I am asked to review user details
+    Then  I enter all fields and save account
+    When  I review user details and confirm
     And I can see all users table
