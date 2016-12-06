@@ -39,3 +39,9 @@ end
 Then(/^I am asked to review user details$/) do
   on(CreateAccountPage).confirm
 end
+
+And(/^I can see all users table$/) do
+  expected  = @data.expected_users
+  actual    = on(Dashboard).get_users
+  expect(actual).to look_like(expected)
+end
