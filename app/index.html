@@ -22,14 +22,11 @@
 
 <body ng-app="app">
 <div class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" href="#">Home</a>
+    <a class="navbar-brand" ui-sref="dashboard">Home</a>
 
     <ul class="nav navbar-nav pull-right" ng-show="user.id">
         <li class="nav-item active">
             <a class="nav-link btn btn-secondary" logout href="#">Logout <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item active">
-            <a class="nav-link" ui-sref="users" >Users</a>
         </li>
     </ul>
 
