@@ -9,8 +9,9 @@ Then(/^I can see my name on dashboard as an admin$/) do
 end
 
 And(/^I can see all active users listed on my dashboard$/) do
+  on(Dashboard).view_users
   expected  = @data.active_users
-  actual    = on(Dashboard).active_users
+  actual    = on(Dashboard).get_users
   expect(actual).to eq(expected)
 end
 
@@ -19,8 +20,10 @@ Given(/^I am "([^"]*)"$/) do |user_name|
 end
 
 And(/^I can see all active users table$/) do
+  on(Dashboard).view_users
+
   expected  = @data.active_users
-  actual    = on(Dashboard).active_users
+  actual    = on(Dashboard).get_users
   expect(actual).to look_like(expected)
 end
 

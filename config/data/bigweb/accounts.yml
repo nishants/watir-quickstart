@@ -1,0 +1,15 @@
+Admin creates a guest user:
+  name_error      : "Can't proceed without username"
+  role_error      : "Can't proceed without assigning role"
+  email_error     : "Can't proceed without email"
+  expected_users  : [
+    ["User One", "user-one@mails.com", "10 Minutes"],
+    ["User Two", "user-two@mails.com", "9 hours, 10 Minutes"],
+    ["Guest Singh", "guest@one.com", ""]
+  ]
+
+  form_data:
+    email     : "guest@one.com"
+    full_name : "Guest Singh"
+    role      : "guest"
+    username  : "guest"

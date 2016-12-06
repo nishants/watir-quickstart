@@ -6,9 +6,12 @@ class Dashboard < Page
   def get_user_message
     message_element.when_present.text
   end
-
-  def active_users
+  def view_users
     view_users_element.when_present.click
-    [["User One","user-one@mails.com","10 Minutes"], ["User Two","user-two@mails.com","9 hours, 10 Minutes"]]
+  end
+
+  def get_users
+    browser_table = @browser.table(:id => "users").when_present
+    rows_of(browser_table)
   end
 end

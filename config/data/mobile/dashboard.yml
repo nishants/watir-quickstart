@@ -5,7 +5,3 @@ Dashboard for admin user:
     ["User One","user-one@mails.com","10 Minutes"],
     ["User Two","user-two@mails.com","9 hours, 10 Minutes"]
   ]
-
-Dashboard view for admin user:
-  active_users: [["name","email","/Minute|Hour|Day/"]]
-  welcome_message : "Welcome [A-Za-z]+ on bigweb"

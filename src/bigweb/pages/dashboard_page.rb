@@ -8,8 +8,11 @@ class Dashboard < Page
     message_element.when_present.text
   end
 
-  def active_users
+  def view_users
     view_users_element.when_present.click
+  end
+
+  def get_users
     users_element.when_present
     rows_of(@browser.table(:id =>  "users"))
   end
