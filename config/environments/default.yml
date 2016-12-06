@@ -1,6 +1,6 @@
 urls :
-  default : http://localhost:8389/rubycumwatir/app/index.html
-  stubbed : http://localhost:8389/rubycumwatir/app/index.html
+  default : http://localhost:4567/
+  stubbed : http://localhost:4567/
   
 data :
   default : config/data/bigweb
