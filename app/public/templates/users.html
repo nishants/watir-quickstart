@@ -1,1 +1,20 @@
-<h1>Users</h1>
+<div ui-view>
+    <h1>Users</h1>
+    <a ui-sref="users.create">create</a>
+    <table name="users" class="table no-mobile">
+        <thead>
+        <tr>
+            <th>Full name</th>
+            <th>email</th>
+            <th>Duration</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="user in user.data.active_users">
+            <td ng-bind="user[0]"></td>
+            <td ng-bind="user[1]"></td>
+            <td ng-bind="user[2]"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>

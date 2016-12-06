@@ -60,9 +60,16 @@
                     templateUrl: "templates/dashboard.html",
                     controller: function ($scope, userService) {
                     }
-                }).state("users", {
+                })
+                .state("users", {
                     url: "/users",
                     templateUrl: "templates/users.html",
+                    controller: function ($scope, userService) {
+                    }
+                })
+                .state("users.create", {
+                    url: "/create",
+                    templateUrl: "templates/users/create.html",
                     controller: function ($scope, userService) {
                     }
                 });
