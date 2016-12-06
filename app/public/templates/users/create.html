@@ -1,11 +1,13 @@
 <h1>User Registration</h1>
+<div>
+    <form>
+        <div class="form-group">
+            <label>username</label>
+            <input class="form-control" placeholder="username" ng-model="form.values.username">
+        </div>
 
-<form>
-    <div>
-        <label>username</label>
-        <input placeholder="username" ng-model="form.values.username">
-    </div>
-    <div>
-        <a ui-sref="users.confirm" class="btn btn-primary">Create</a>
-    </div>
-</form>
+        <div>
+            <a ui-sref="users.confirm" class="btn btn-primary">Create</a>
+        </div>
+    </form>
+</div>
