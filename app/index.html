@@ -9,11 +9,28 @@
     <script src="lib/ui-router.js"></script>
     <script src="lib/jquery-3.1.1.min.js"></script>
     <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+    <style>
+        h1{
+            padding : 10px;
+        }
+    </style>
 </head>
 
 <body ng-app="app">
-<a logout>logout</a>
-<a ui-sref="users" >users</a>
+<div class="navbar navbar-light bg-faded">
+    <a class="navbar-brand" href="#">Home</a>
+
+    <ul class="nav navbar-nav pull-right">
+        <li class="nav-item active">
+            <a class="nav-link" logout href="#">Logout <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item active">
+            <a class="nav-link" ui-sref="users" >Users</a>
+        </li>
+    </ul>
+
+</div>
+
 <div class="container"ui-view></div>
 
 <script>
@@ -73,7 +90,7 @@
                                 username: "guest",
                                 email   : "guest@123.com",
                                 full_name: "Guest Singh",
-                                role     : "guest",
+                                role     : null,
                                 terms_accepted: false,
                             },
                             reset: function(){

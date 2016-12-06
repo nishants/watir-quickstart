@@ -1,11 +1,27 @@
 <h1>User Registration</h1>
 
-<form>
-    <div class="form-group">
-        <span>username : </span>
-        <label ng-bind="form.values.username"></label>
-    </div>
-    <div>
-        <a ng-click="form.submit()" class="btn btn-primary">Confirm</a>
-    </div>
-</form>
+<div class="card">
+    <form class="card-block">
+        <div class="form-group">
+            <span>Username : </span>
+            <label ng-bind="form.values.username"></label>
+        </div>
+        <div class="form-group">
+            <span>Email : </span>
+            <label ng-bind="form.values.email"></label>
+        </div>
+        <div class="form-group">
+            <span>Full name : </span>
+            <label ng-bind="form.values.full_name"></label>
+        </div>
+
+        <div class="form-group">
+            <span>Role      : </span>
+            <label ng-bind="form.values.role"></label>
+        </div>
+
+        <div>
+            <a ng-click="form.submit()" class="btn btn-warning">Confirm</a>
+        </div>
+    </form>
+</div>

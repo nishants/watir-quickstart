@@ -1,13 +1,26 @@
 <h1>User Registration</h1>
-<div>
-    <form>
+<div class="card">
+    <form class="card-block">
         <div class="form-group">
-            <label>username</label>
-            <input class="form-control" placeholder="username" ng-model="form.values.username">
+            <label>Username</label>
+            <input name="username" class="form-control" placeholder="username" ng-model="form.values.username">
+        </div>
+
+        <div class="form-group">
+            <label>Full name</label>
+            <input name="full-name" class="form-control" placeholder="full name" ng-model="form.values.full_name">
+        </div>
+
+        <div class="form-group">
+            <label>Role</label>
+            <select name="select-role" class="form-control" ng-model="form.values.role">
+                <option value="{{null}}">---Please select---</option>
+                <option value="{{role.name}}" ng-repeat="role in form.options.roles">{{role.name}}</option>
+            </select>
         </div>
 
         <div>
-            <a ui-sref="users.confirm" class="btn btn-primary">Create</a>
+            <a name="create" ui-sref="users.confirm" class="btn btn-primary">Create</a>
         </div>
     </form>
 </div>
