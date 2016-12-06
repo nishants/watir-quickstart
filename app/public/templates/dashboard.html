@@ -1,11 +1,11 @@
 <div class="card">
     <div class="card-block">
         <div ng-show="user.id">
-            <label name="mobile-message" class="visible-xs visible-sm hidden-lg hidden-md">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
-            <label name="bigweb-message" class="visible-lg visible-md hidden-xs hidden-sm">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
+            <label name="mobile-message" class="mobile-only">Welcome <span class="mobile-username">{{user.name}}</span> on mobile</label>
+            <label name="bigweb-message" class="noMobile">Welcome <span class="desktop-username ">{{user.name}}</span> on bigweb</label>
 
             <div>
-                <a id="current-users" class="btn btn-default" ui-sref="users">View Users</a>
+                <a id="current-users" class="btn btn-secondary" ui-sref="users">View Users</a>
             </div>
         </div>
     </div>

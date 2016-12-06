@@ -159,7 +159,7 @@
         return {
             restrict: "C",
             link: function(scope, element){
-                element.addClass("visible-xs visible-sm hidden-lg hidden-md");
+                element.addClass("hidden-lg-up");
             }
         };
     });
@@ -178,7 +178,7 @@
         return {
             restrict: "C",
             link: function(scope, element){
-                element.addClass("visible-lg visible-md hidden-xs hidden-sm");
+                element.addClass("hidden-md-down");
             }
         };
     });
