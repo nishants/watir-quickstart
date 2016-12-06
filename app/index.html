@@ -12,7 +12,7 @@
 </head>
 
 <body ng-app="app">
-<a class="logout">logout</a>
+<a logout>logout</a>
 <a ui-sref="users">users</a>
     <div ui-view></div>
 
@@ -64,12 +64,47 @@
                 .state("users", {
                     url: "/users",
                     templateUrl: "templates/users.html",
-                    controller: function ($scope, userService) {
+                    controller: function ($scope, $state, userService, $localStorage) {
+                        var form = {
+                            options: {
+                                roles: [{name: "admin"},{name: "guest"},{name: "moderator"}]
+                            },
+                            values: {
+                                username: "guest",
+                                email   : null,
+                                full_name: null,
+                                role     : null,
+                                terms_accepted: false,
+                            },
+                            reset: function(){
+                                form.username = null;
+                                form.email = null;
+                                form.full_name = null;
+                                form.role = null;
+                                form.terms_accepted = false;
+                            },
+                            getValue: function(){
+                                return [form.username, form.email, ""];
+                            },
+                            submit: function(){
+                                userService.create(form.getValue()).then(function(data){
+                                    $scope.user.data = data;
+                                });
+                                $state.go("users");
+                            }
+                        };
+                        $scope.form = form;
                     }
                 })
                 .state("users.create", {
                     url: "/create",
                     templateUrl: "templates/users/create.html",
+                    controller: function ($scope, userService) {
+                    }
+                })
+                .state("users.confirm", {
+                    url: "/confirm",
+                    templateUrl: "templates/users/confirm.html",
                     controller: function ($scope, userService) {
                     }
                 });
@@ -83,6 +118,16 @@
             }
         };
     });
+    app.directive("logout", function(userService, $state){
+        return {
+            link: function(scope, element){
+                element.on("click",function(){
+                    userService.logout();
+                    $state.go("login");
+                });
+            }
+        };
+    });
 
     app.directive("noMobile", function(){
         return {
@@ -93,13 +138,22 @@
         };
     });
 
-    app.service("userService", function ($http, $q) {
+    app.service("userService", function ($http, $q, $localStorage) {
         var users = $http.get("server/users.json").then(function (response) {
             return response.data;
         });
 
         var service = {
             current: null,
+            create: function(user){
+                var deferred = $q.defer();
+                $localStorage.user.data.active_users.push(user);
+                deferred.resolve($localStorage.user.data);
+                return deferred.promise;
+            },
+            logout: function(){
+                $localStorage.user = null;
+            },
             login: function (form) {
                 var deferred = $q.defer();
                 users.then(function (users) {
@@ -108,6 +162,7 @@
                     });
 
                     service.current = found[0];
+                    $localStorage.user = found[0];
                     service.current ? deferred.resolve(service.current) : deferred.reject({message: "Incorrect username/password."});
                 });
                 return deferred.promise;

@@ -3,6 +3,9 @@
 <form>
     <div>
         <label>username</label>
-        <input placeholder="username">
+        <input placeholder="username" ng-model="form.values.username">
+    </div>
+    <div>
+        <a ui-sref="users.confirm" class="btn btn-primary">Create</a>
     </div>
 </form>
