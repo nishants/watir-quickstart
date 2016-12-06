@@ -3,22 +3,22 @@
     <form class="card-block">
         <div class="form-group">
             <label>Username</label>
-            <input name="username" class="form-control" placeholder="username" ng-model="form.values.username">
+            <input name="username" class="form-control" placeholder="username" ng-model="form.values.username" ng-class="{'error': form.errors.username}">
         </div>
 
         <div class="form-group">
             <label>Full name</label>
-            <input name="full-name" class="form-control" placeholder="full name" ng-model="form.values.full_name">
+            <input name="full-name" class="form-control" placeholder="full name" ng-model="form.values.full_name" >
         </div>
 
         <div class="form-group">
             <label>Email</label>
-            <input name="email" class="form-control" placeholder="email" ng-model="form.values.email">
+            <input name="email" class="form-control" placeholder="email" ng-model="form.values.email" ng-class="{'error': form.errors.email}">
         </div>
 
         <div class="form-group">
             <label>Role</label>
-            <select name="select-role" class="form-control" ng-model="form.values.role">
+            <select name="select-role" class="form-control" ng-model="form.values.role" ng-class="{'error': form.errors.role}">
                 <option value="{{null}}">---Please select---</option>
                 <option value="{{role.name}}" ng-repeat="role in form.options.roles">{{role.name}}</option>
             </select>
