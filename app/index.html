@@ -14,22 +14,37 @@
             padding : 10px;
         }
         label.error{
-            color: orangered;
+            color: #FF4500;
             display: block;
         }
         select.error,  input.error{
-            outline : 1px solid orangered;
+            outline : 1px solid #FF4500;
+        }
+        .navbar{
+            min-height: 54px;
+            border-radius: 2px;
+            background-color: #0365C0;;
+        }
+        .navbar-brand,.nav-link {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        a.create-user{
+            text-align: right;
+            display: block;
+        }
+        a[name="create-user"]{
+            color: rgba(255, 255, 255, 0.9) !important;
         }
     </style>
 </head>
 
 <body ng-app="app">
-<div class="navbar navbar-light bg-faded">
-    <a class="navbar-brand" ui-sref="dashboard">Home</a>
+<div class="navbar">
+    <a class="navbar-brand" ui-sref="dashboard" ng-show="user.id">Home</a>
 
     <ul class="nav navbar-nav pull-right" ng-show="user.id">
         <li class="nav-item active">
-            <a class="nav-link btn btn-secondary" logout href="#">Logout <span class="sr-only">(current)</span></a>
+            <a class="nav-link btn" logout href="#">Logout <span class="sr-only">(current)</span></a>
         </li>
     </ul>
 
