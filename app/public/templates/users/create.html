@@ -12,6 +12,11 @@
         </div>
 
         <div class="form-group">
+            <label>Email</label>
+            <input name="email" class="form-control" placeholder="email" ng-model="form.values.email">
+        </div>
+
+        <div class="form-group">
             <label>Role</label>
             <select name="select-role" class="form-control" ng-model="form.values.role">
                 <option value="{{null}}">---Please select---</option>
@@ -19,8 +24,13 @@
             </select>
         </div>
 
-        <div>
-            <a name="create" ui-sref="users.confirm" class="btn btn-primary">Create</a>
+        <div class="form-group">
+            <label class="user error"  ng-bind="form.errors.username"   ></label>
+            <label class="email error" ng-bind="form.errors.email"      ></label>
+            <label class="role error"  ng-bind="form.errors.role"       ></label>
+        </div>
+        <div class="form-group">
+            <a name="create" ng-click="form.save()" class="btn btn-primary">Create</a>
         </div>
     </form>
 </div>
