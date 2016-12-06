@@ -39,4 +39,13 @@ class CreateAccountPage < Page
     @browser.link(:name =>  "create-user").when_present.click
   end
 
+  def review_data
+    {
+       "email" =>  @browser.element(:name =>  "email").when_present.text,
+       "username" =>  @browser.element(:name =>  "username").when_present.text,
+       "full_name" =>  @browser.element(:name =>  "full-name").when_present.text,
+       "role" =>  @browser.element(:name =>  "role").when_present.text,
+    }
+  end
+
 end

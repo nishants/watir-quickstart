@@ -31,6 +31,9 @@ When(/^I enter all fields and save account$/) do
 end
 
 Then(/^I review user details and confirm$/) do
+  expected = @data.form_data
+  actual   = on(CreateAccountPage).review_data
+  expect(actual).to eq(expected)
   on(CreateAccountPage).confirm
 end
 
