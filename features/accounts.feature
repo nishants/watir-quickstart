@@ -1,4 +1,4 @@
-Feature: Dashboard
+Feature: Accounts
 
   @functional @smoke @admin @accounts @create
   Scenario: Admin creates a guest user
