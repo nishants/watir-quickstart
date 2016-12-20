@@ -86,10 +86,6 @@ namespace :test do
   task :all => ["test:integration:all", :"test:functional:all"]
 
   multitask :tag => ["test:integration:tag:all", :"test:functional:tag:all"]
-  namespace :tag do
-    multitask :mobile => ["test:integration:tag:mobile", :"test:functional:tag:mobile"]
-    multitask :bigweb => ["test:integration:tag:bigweb", :"test:functional:tag:bigweb"]
-  end
 end
 
 task(:default => "test:all")
