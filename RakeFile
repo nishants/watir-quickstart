@@ -21,71 +21,27 @@ def create(name: , options:, profile: )
   end
 end
 
+bigweb_integration_options  = options
+bigweb_functional_options   = options(url: "stubbed", users: "stubbed")
+
+mobile_functional_options   = options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5")
+mobile_integration_options  = options(page_dir: "mobile", data_suite: "mobile", client: "iphone5")
+
+
 namespace :test do
-  namespace :functional do
-    create(name: "bigweb", profile: "functional", options: options(url: "stubbed", users: "stubbed"))
-    create(name: "mobile", profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-
-    namespace :tag do
-      create(name: "bigweb" , profile: "functional", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:functional:tag:bigweb", :"test:functional:tag:mobile"]
-    end
-
-    namespace :smoke do
-      create(name: "bigweb" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional-smoke", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:functional:smoke:bigweb", :"test:functional:smoke:mobile"]
-    end
-
-    namespace :core do
-      create(name: "bigweb" , profile: "functional-core", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional-core", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:functional:core:bigweb", :"test:functional:core:mobile"]
-    end
-
-    namespace :regression do
-      create(name: "bigweb" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed"))
-      create(name: "mobile" , profile: "functional-regression", options: options(url: "stubbed", users: "stubbed", page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:functional:regression:bigweb", :"test:functional:regression:mobile"]
-    end
-
-    multitask :all => ["test:functional:bigweb", :"test:functional:mobile"]
+  namespace :mobile do
+    create(name: "integration", profile: "integration", options: mobile_integration_options)
+    create(name: "functional" , profile: "functional" , options: mobile_functional_options)
+    multitask :all => ["test:mobile:functional", :"test:mobile:integration"]
   end
 
-  namespace :integration do
-    create(name: "bigweb", profile: "integration", options: options)
-    create(name: "mobile", profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-
-    namespace :tag do
-      create(name: "bigweb" , profile: "integration", options: options)
-      create(name: "mobile" , profile: "integration", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:integration:tag:bigweb", :"test:integration:tag:mobile"]
-    end
-
-    namespace :smoke do
-      create(name: "bigweb" , profile: "integration-smoke", options: options)
-      create(name: "mobile" , profile: "integration-smoke", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:integration:smoke:bigweb", :"test:integration:smoke:mobile"]
-    end
-
-    namespace :core do
-      create(name: "bigweb" , profile: "integration-core", options: options)
-      create(name: "mobile" , profile: "integration-core", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:integration:core:bigweb", :"test:integration:core:mobile"]
-    end
-
-    namespace :regression do
-      create(name: "bigweb" , profile: "integration-regression", options: options)
-      create(name: "mobile" , profile: "integration-regression", options: options(page_dir: "mobile", data_suite: "mobile", client: "iphone5"))
-      task :all => ["test:integration:regression:bigweb", :"test:integration:regression:mobile"]
-    end
-
-    task :all => ["test:integration:bigweb", :"test:integration:mobile"]
+  namespace :bigweb do
+    create(name: "functional", profile: "functional", options: bigweb_functional_options)
+    create(name: "integration", profile: "integration", options: bigweb_integration_options)
+    multitask :all => ["test:bigweb:functional", :"test:bigweb:integration"]
   end
-  task :all => ["test:integration:all", :"test:functional:all"]
 
-  multitask :tag => ["test:integration:tag:all", :"test:functional:tag:all"]
+  task :all => ["test:bigweb:all", :"test:mobile:all"]
 end
 
 task(:default => "test:all")
