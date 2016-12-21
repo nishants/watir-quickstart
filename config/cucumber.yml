@@ -1,4 +1,4 @@
-<% source     = "./src/common"%>
+<% source     = "./features"%>
 <% smoke      = "--tags ~@regression --tags ~@core"%>
 <% core       = "--tags ~@regression --tags ~@smoke"%>
 <% tag       = "@one"%>
