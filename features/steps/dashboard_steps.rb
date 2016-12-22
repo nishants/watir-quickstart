@@ -1,5 +1,6 @@
 Given(/^I am the "([^"]*)"$/) do |user_name|
-  visit(Login).login(@users.get(user_name))
+  user = @users.get(user_name)
+  visit(Login).login(user)
 end
 
 Then(/^I can see my name on dashboard as an admin$/) do
