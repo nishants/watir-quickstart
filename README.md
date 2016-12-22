@@ -1,36 +1,30 @@
-## Running Tests
+## Setup
+- install webdriver on path
+- bundle install
 
-### By Tag
+## Sample Rake Commands
+ 
+### Functional tests, Firefox, Dev machine, for specific feature
+rake test:bigweb:functional client=firefox tags=@accounts
+
+### Readonly Integration tests, staging env
 ```bash
-rake test:<functional|integration>:<tag>:<mobile|bigweb|all> tags=@tag [options]
-```
-- example
-```bash
-rake test:tag tags=@dashboard
-rake test:tag tags=@account,@dashboard
-
-rake test:tag:mobile tags=@dashboard
-rake test:tag:bigweb tags=@dashboard client=firefox
-
-rake test:functional:tag:all tags=@one
-rake test:integration:tag:mobile tags=@one
-
-```
-### By Priority
-```bash
-rake test:<functional|integration>:<smoke|core|regression>:<mobile|bigweb|all> [options]
-```
-- example
-```bash
-rake test:functional:smoke:all 
-rake test:integration:regression:bigweb
-rake test:integration:core:mobile 
-
+rake test:mobile:integration env=staging readonly=true
 ```
 
-### By test type
+### Functional Smoke, for mobile web , on CI machine,
 ```bash
-rake test:<functional|integration>:<mobile|bigweb|all> [options]
+rake test::mobile:functional env=ci tags=@smoke
+```
+
+### Regression Integration, for big-web , on CI machine,
+```bash
+rake test:bigweb:integration env=ci tags=@regression
+```
+
+### Integration tests, chrome iphone-5 emulator , CI machine
+```bash
+rake test:mobile:integration  env=ci  client=iphone5
 ```
 
 ### Options
