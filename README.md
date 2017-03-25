@@ -34,6 +34,5 @@ rake command [env=<env-name> | device=<device-name> | pages=<path/to/pages> | da
 - example
 ```bash
 rake test:functional:smoke:bigweb env=ci  users=stubbed
-rake test:functional:tag:bigweb env=dev tags=@one users=stubbed url=google.com report_file=abc.html client=firefox data_suite=default page_dir=default 
-   
+rake test:functional:tag:bigweb env=dev tags=@one users=stubbed url=google.com report_file=abc.html client=firefox data_suite=default page_dir=default    
 ```
